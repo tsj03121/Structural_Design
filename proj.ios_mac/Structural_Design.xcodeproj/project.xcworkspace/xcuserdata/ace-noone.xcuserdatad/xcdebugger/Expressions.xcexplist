@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "GLOBAL">
+         <PersistentStrings>
+            <PersistentString
+               value = "moveSpeed_">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameLayerController::PlayerInfoUpdate():GameLayerController.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "TitleLayer::init():TitleLayer.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GameLayerController::CoinCheck(cocos2d::Layer*, cocos2d::Sprite*):GameLayerController.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "playerInfo">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
