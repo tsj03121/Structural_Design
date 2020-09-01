@@ -9,6 +9,7 @@
 #include "LobbyLayerController.h"
 #include "MainLayer.h"
 #include "LobbyLayer.h"
+#include "PlayerInfomation.h"
 
 USING_NS_CC;
 
@@ -24,4 +25,21 @@ void LobbyLayerController::Change_MainLayer(Ref* pSender)
     view->removeAllChildren();
     Layer* layer = MainLayer::createLayer();
     view->addChild(layer,1,"Layer");
+}
+
+void LobbyLayerController::TicketBuy(Ref *pSender)
+{
+    PlayerInfo pPlayerInfo = PlayerInfo::getInstance();
+    if(pPlayerInfo.pPlayerInfo_->getTicket() > 4)
+        return;
+    
+    pPlayerInfo.pPlayerInfo_->setTicket(pPlayerInfo.pPlayerInfo_->getTicket() + 1);
+    
+    Scene* scene = _director->getRunningScene();
+    Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
+    
+    Label* ticketTextLabel = (Label*) layer->getChildByName("TicKet");
+    std::string ticketText = std::to_string(pPlayerInfo.pPlayerInfo_->getTicket());
+    ticketText.append(" / 5");
+    ticketTextLabel->setString(ticketText);
 }

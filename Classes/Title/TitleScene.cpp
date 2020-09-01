@@ -10,6 +10,7 @@
 #include "TitleScene.h"
 #include "TitleLayerController.h"
 #include "TitleLayer.h"
+#include "DataIO.h"
 
 USING_NS_CC;
 
@@ -30,6 +31,7 @@ bool TitleScene::init()
     
     Layer* view = Layer::create();
     addChild(view, 1, "View");
+    
     Layer* layer = TitleLayer::createLayer();
     view->addChild(layer,1,"Layer");
     

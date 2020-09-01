@@ -11,12 +11,25 @@
 #include "RewardLayer.h"
 #include "LobbyScene.h"
 #include "PlayerInfomation.h"
+#include "DataIO.h"
 
 USING_NS_CC;
 
 
 void GameLayerController::Change_ResultLayer(Ref* pSender)
 {
+    PlayerInfo pPlayerInfo = PlayerInfo::getInstance();
+    DataIO* pDataIO = DataIO::getInstance();
+    
+    int data[5];
+    data[0] = pPlayerInfo.pPlayerInfo_->getHighScore();
+    data[1] = pPlayerInfo.pPlayerInfo_->getTotalScore();
+    data[2] = pPlayerInfo.pPlayerInfo_->shortClearTime_;
+    data[3] = pPlayerInfo.pPlayerInfo_->getMoney();
+    data[4] = pPlayerInfo.pPlayerInfo_->getTicket();
+    
+    pDataIO->writeJSON();
+    
     Scene* scene = _director->getRunningScene();
     Layer* view = (Layer*) scene->getChildByName("View");
     view->removeAllChildren();

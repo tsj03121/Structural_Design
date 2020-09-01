@@ -10,6 +10,7 @@
 #include "SimpleAudioEngine.h"
 #include "GameLayerController.h"
 #include "PlayerInfomation.h"
+#include "DataIO.h"
 
 USING_NS_CC;
 
@@ -27,9 +28,8 @@ bool GameLayer::init()
     {
         return false;
     }
-    float x = _director->getWinSize().width;
-    float y = _director->getWinSize().height;
-    int spriteSize = 30;
+
+
     Label* label = Label::createWithTTF("GameScene-GameLayer", "fonts/Marker Felt.ttf", 15);
     if(label != nullptr)
     {
@@ -39,28 +39,6 @@ bool GameLayer::init()
     
     GameLayerController* controller = new GameLayerController();
     addChild(controller, -1, "Controller");
-    
-    int randCoinCount = RandomHelper::random_int(1, 8);
-    for(int i = 0; i < randCoinCount; ++i)
-    {
-        int randX = RandomHelper::random_int(spriteSize, (int)x);
-        int randY = RandomHelper::random_int(spriteSize, (int)y);
-        
-        Sprite* coinSprite = Sprite::create("coin.png");
-        if(coinSprite == nullptr)
-            continue;
-        
-        coinSprite->setScale(0.05, 0.05);
-        coinSprite->setPosition(randX, randY);
-        addChild(coinSprite, 1, "Coin");
-    }
-
-    Sprite* playerSprite = Sprite::create("red.png",Rect(0,0,spriteSize,spriteSize));
-    if(playerSprite != nullptr)
-    {
-        playerSprite->setPosition(20,20);
-        addChild(playerSprite, 1, "Player");
-    }
     
     MenuItemImage* menuItemUP = MenuItemImage::create("CloseNormal.png","CloseSelected.png", controller, menu_selector(GameLayerController::MoveUP));
     if(menuItemUP != nullptr)
@@ -105,4 +83,38 @@ bool GameLayer::init()
     this->schedule(schedule_selector(GameLayerController::Timer), 1.0);
     
     return true;
+}
+
+void GameLayer::PlayerCreate()
+{
+    Sprite* playerSprite = Sprite::create("red.png",Rect(0, 0, spriteSize, spriteSize));
+    if(playerSprite != nullptr)
+    {
+        playerSprite->setPosition(20,20);
+        addChild(playerSprite, 1, "Player");
+    }
+}
+
+void GameLayer::CoinCreate()
+{
+    int randCoinCount = RandomHelper::random_int(1, 8);
+    for(int i = 0; i < randCoinCount; ++i)
+    {
+        int randX = RandomHelper::random_int(spriteSize, (int)x);
+        int randY = RandomHelper::random_int(spriteSize, (int)y);
+        
+        Sprite* coinSprite = Sprite::create("coin.png");
+        if(coinSprite == nullptr)
+            continue;
+        
+        coinSprite->setScale(0.05, 0.05);
+        coinSprite->setPosition(randX, randY);
+        addChild(coinSprite, 1, "Coin");
+    }
+}
+
+void GameLayer::Load()
+{
+    DataIO* dataIO = DataIO::getInstance();
+    dataIO->readMapJSON(this);
 }

@@ -25,6 +25,7 @@
 #include "AppDelegate.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "EditorScene.h"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -120,7 +121,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     auto scene = TitleScene::createScene();
-    //auto scene = GameScene::createScene();
+    //auto scene = EditorScene::createScene();
     scene->setName("GameScene");
 
     // run

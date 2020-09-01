@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "LobbyScene.h"
 #include "RewardLayerController.h"
+#include "DataIO.h"
 
 USING_NS_CC;
 

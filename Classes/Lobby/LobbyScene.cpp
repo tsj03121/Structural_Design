@@ -32,11 +32,7 @@ bool LobbyScene::init()
     addChild(view, 1, "View");
     
     Layer* layer = LobbyLayer::createLayer();
-    view->addChild(layer,1,"Layer");
-    
-    Node* lobbyController = LobbyLayerController::create();
-    layer->addChild(lobbyController, -1, "LobbyLayerController");
-    
+    view->addChild(layer,1,"Layer");    
   
     return true;
 }

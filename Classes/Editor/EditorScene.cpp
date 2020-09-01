@@ -1,24 +1,24 @@
 //
-//  GameScene.cpp
-//  Structural_Design
+//  EditorScene.cpp
+//  Structural_Design_Temp
 //
-//  Created by CD-parkdaedong on 2020/08/27.
+//  Created by CD-parkdaedong on 2020/08/31.
 //
 
 #include <stdio.h>
+#include "EditorScene.h"
 #include "SimpleAudioEngine.h"
-#include "GameScene.h"
-#include "GameLayer.h"
+#include "EditorLayer.h"
 
 USING_NS_CC;
 
-Scene* GameScene::createScene()
+Scene* EditorScene::createScene()
 {
-    return GameScene::create();
+    return EditorScene::create();
 }
 
 // on "init" you need to initialize your instance
-bool GameScene::init()
+bool EditorScene::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -30,9 +30,9 @@ bool GameScene::init()
     Layer* view = Layer::create();
     addChild(view, 1, "View");
     
-    Layer* layer = GameLayer::createLayer();
+    Layer* layer = EditorLayer::createLayer();
     view->addChild(layer,1,"Layer");
-
-  
+      
     return true;
 }
+

@@ -11,7 +11,7 @@
 class GameLayerController : public cocos2d::Node
 {
 public:
-    int moveSpeed_ = 10;
+    int moveSpeed_ = 30;
     
 public:
     void Timer(float dt);

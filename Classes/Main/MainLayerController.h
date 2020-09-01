@@ -14,5 +14,7 @@ class MainLayerController : public cocos2d::Node
 public:
     void Change_LobbyLayer(cocos2d::Ref* pSender);
     void Goto_GameScene(cocos2d::Ref* pSender);
+    void Load_Map(cocos2d::Ref* pSender);
+    void Goto_MapEditor(cocos2d::Ref* pSender);
 };
 #endif /* MainController_h */

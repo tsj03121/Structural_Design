@@ -44,9 +44,15 @@ bool MainLayer::init()
     MenuItemFont* menuItem2 = MenuItemFont::create("게임 시작", this, menu_selector(MainLayerController::Goto_GameScene));
     menuItem2->setScale(0.3, 0.3);
     
-    Menu* menu = Menu::create(menuItem1, menuItem2, NULL);
-    menu->alignItemsHorizontally();
-    menu->setPosition(Vec2(x * 0.9, y * 0.1));
+    MenuItemFont* menuItem3 = MenuItemFont::create("맵 불러오기", this, menu_selector(MainLayerController::Load_Map));
+    menuItem3->setScale(0.3, 0.3);
+    
+    MenuItemFont* menuItem4 = MenuItemFont::create("맵 만들기", this, menu_selector(MainLayerController::Goto_MapEditor));
+    menuItem4->setScale(0.3, 0.3);
+    
+    Menu* menu = Menu::create(menuItem1, menuItem2, menuItem3, menuItem4, NULL);
+    menu->alignItemsVertically();
+    menu->setPosition(Vec2(x * 0.9, y * 0.2));
     
     addChild(menu);
     

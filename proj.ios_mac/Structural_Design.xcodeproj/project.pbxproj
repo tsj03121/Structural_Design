@@ -53,6 +53,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
+		FC2C614024F901D800A23D0B /* DataIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC2C613F24F901D800A23D0B /* DataIO.cpp */; };
+		FC2C614124F901D800A23D0B /* DataIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC2C613F24F901D800A23D0B /* DataIO.cpp */; };
 		FCAF0D7F24F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8024F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8724F7750D00698B22 /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D8624F7750D00698B22 /* TitleLayer.cpp */; };
@@ -89,6 +91,28 @@
 		FCE594DD24F8AA4200A43F57 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = FCE594DB24F8AA4200A43F57 /* red.png */; };
 		FCE594DF24F8AF9000A43F57 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = FCE594DE24F8AF9000A43F57 /* coin.png */; };
 		FCE594E024F8AF9000A43F57 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = FCE594DE24F8AF9000A43F57 /* coin.png */; };
+		FCF2880A24FC8B350064F674 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = FCF287FA24FC8B350064F674 /* json_internalarray.inl */; };
+		FCF2880B24FC8B350064F674 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = FCF287FA24FC8B350064F674 /* json_internalarray.inl */; };
+		FCF2880C24FC8B350064F674 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF287FD24FC8B350064F674 /* json_value.cpp */; };
+		FCF2880D24FC8B350064F674 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF287FD24FC8B350064F674 /* json_value.cpp */; };
+		FCF2880E24FC8B350064F674 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = FCF287FE24FC8B350064F674 /* sconscript */; };
+		FCF2880F24FC8B350064F674 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = FCF287FE24FC8B350064F674 /* sconscript */; };
+		FCF2881024FC8B350064F674 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2880324FC8B350064F674 /* json_reader.cpp */; };
+		FCF2881124FC8B350064F674 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2880324FC8B350064F674 /* json_reader.cpp */; };
+		FCF2881224FC8B350064F674 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2880624FC8B350064F674 /* json_writer.cpp */; };
+		FCF2881324FC8B350064F674 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2880624FC8B350064F674 /* json_writer.cpp */; };
+		FCF2881424FC8B350064F674 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = FCF2880824FC8B350064F674 /* json_valueiterator.inl */; };
+		FCF2881524FC8B350064F674 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = FCF2880824FC8B350064F674 /* json_valueiterator.inl */; };
+		FCF2881624FC8B350064F674 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = FCF2880924FC8B350064F674 /* json_internalmap.inl */; };
+		FCF2881724FC8B350064F674 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = FCF2880924FC8B350064F674 /* json_internalmap.inl */; };
+		FCF2881F24FCDDDF0064F674 /* EditorScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2881E24FCDDDF0064F674 /* EditorScene.cpp */; };
+		FCF2882024FCDDDF0064F674 /* EditorScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2881E24FCDDDF0064F674 /* EditorScene.cpp */; };
+		FCF2882324FCDE850064F674 /* EditorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882224FCDE850064F674 /* EditorLayer.cpp */; };
+		FCF2882424FCDE850064F674 /* EditorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882224FCDE850064F674 /* EditorLayer.cpp */; };
+		FCF2882724FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
+		FCF2882824FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
+		FCF2882B24FCE3070064F674 /* EditorIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882A24FCE3070064F674 /* EditorIO.cpp */; };
+		FCF2882C24FCE3070064F674 /* EditorIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882A24FCE3070064F674 /* EditorIO.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +198,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		FC2C613D24F901CE00A23D0B /* DataIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataIO.h; sourceTree = "<group>"; };
+		FC2C613F24F901D800A23D0B /* DataIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataIO.cpp; sourceTree = "<group>"; };
 		FCAF0D7C24F7743C00698B22 /* TitleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		FCAF0D7E24F7744900698B22 /* TitleScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		FCAF0D8524F7750500698B22 /* TitleLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleLayer.h; sourceTree = "<group>"; };
@@ -208,6 +234,30 @@
 		FCE594D824F88FC500A43F57 /* PlayerInfomation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInfomation.cpp; sourceTree = "<group>"; };
 		FCE594DB24F8AA4200A43F57 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		FCE594DE24F8AF9000A43F57 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
+		FCF287FA24FC8B350064F674 /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
+		FCF287FB24FC8B350064F674 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
+		FCF287FC24FC8B350064F674 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		FCF287FD24FC8B350064F674 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
+		FCF287FE24FC8B350064F674 /* sconscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sconscript; sourceTree = "<group>"; };
+		FCF287FF24FC8B350064F674 /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
+		FCF2880024FC8B350064F674 /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
+		FCF2880124FC8B350064F674 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		FCF2880224FC8B350064F674 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
+		FCF2880324FC8B350064F674 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		FCF2880424FC8B350064F674 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		FCF2880524FC8B350064F674 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
+		FCF2880624FC8B350064F674 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
+		FCF2880724FC8B350064F674 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		FCF2880824FC8B350064F674 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
+		FCF2880924FC8B350064F674 /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
+		FCF2881D24FCDDBA0064F674 /* EditorScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorScene.h; sourceTree = "<group>"; };
+		FCF2881E24FCDDDF0064F674 /* EditorScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorScene.cpp; sourceTree = "<group>"; };
+		FCF2882124FCDE7D0064F674 /* EditorLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorLayer.h; sourceTree = "<group>"; };
+		FCF2882224FCDE850064F674 /* EditorLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorLayer.cpp; sourceTree = "<group>"; };
+		FCF2882524FCDED00064F674 /* EditorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorController.h; sourceTree = "<group>"; };
+		FCF2882624FCDED70064F674 /* EditorController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorController.cpp; sourceTree = "<group>"; };
+		FCF2882924FCE2FF0064F674 /* EditorIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorIO.h; sourceTree = "<group>"; };
+		FCF2882A24FCE3070064F674 /* EditorIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorIO.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,7 +403,9 @@
 				FCAF0DCB24F7AD3C00698B22 /* Lobby */,
 				FCAF0DCC24F7AD4A00698B22 /* Main */,
 				FCAF0DCD24F7AD5300698B22 /* Game */,
+				FCF2881C24FCDD860064F674 /* Editor */,
 				FCE594D624F88F9D00A43F57 /* Infomation */,
+				FCF287F924FC8B270064F674 /* json */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 			);
@@ -460,8 +512,48 @@
 			children = (
 				FCE594D724F88FB500A43F57 /* PlayerInfomation.h */,
 				FCE594D824F88FC500A43F57 /* PlayerInfomation.cpp */,
+				FC2C613D24F901CE00A23D0B /* DataIO.h */,
+				FC2C613F24F901D800A23D0B /* DataIO.cpp */,
 			);
 			path = Infomation;
+			sourceTree = "<group>";
+		};
+		FCF287F924FC8B270064F674 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				FCF287FB24FC8B350064F674 /* autolink.h */,
+				FCF2880124FC8B350064F674 /* config.h */,
+				FCF2880524FC8B350064F674 /* features.h */,
+				FCF2880024FC8B350064F674 /* forwards.h */,
+				FCF287FF24FC8B350064F674 /* json_batchallocator.h */,
+				FCF287FA24FC8B350064F674 /* json_internalarray.inl */,
+				FCF2880924FC8B350064F674 /* json_internalmap.inl */,
+				FCF2880324FC8B350064F674 /* json_reader.cpp */,
+				FCF287FD24FC8B350064F674 /* json_value.cpp */,
+				FCF2880824FC8B350064F674 /* json_valueiterator.inl */,
+				FCF2880624FC8B350064F674 /* json_writer.cpp */,
+				FCF287FC24FC8B350064F674 /* json.h */,
+				FCF2880424FC8B350064F674 /* reader.h */,
+				FCF287FE24FC8B350064F674 /* sconscript */,
+				FCF2880224FC8B350064F674 /* value.h */,
+				FCF2880724FC8B350064F674 /* writer.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		FCF2881C24FCDD860064F674 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				FCF2881D24FCDDBA0064F674 /* EditorScene.h */,
+				FCF2881E24FCDDDF0064F674 /* EditorScene.cpp */,
+				FCF2882124FCDE7D0064F674 /* EditorLayer.h */,
+				FCF2882224FCDE850064F674 /* EditorLayer.cpp */,
+				FCF2882524FCDED00064F674 /* EditorController.h */,
+				FCF2882624FCDED70064F674 /* EditorController.cpp */,
+				FCF2882924FCE2FF0064F674 /* EditorIO.h */,
+				FCF2882A24FCE3070064F674 /* EditorIO.cpp */,
+			);
+			path = Editor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,7 +603,7 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design_Temp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -567,12 +659,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
+				FCF2881424FC8B350064F674 /* json_valueiterator.inl in Resources */,
 				1A88B2641FC3D9C9005C14AE /* Images.xcassets in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				FCE594DC24F8AA4200A43F57 /* red.png in Resources */,
+				FCF2880A24FC8B350064F674 /* json_internalarray.inl in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				FCE594DF24F8AF9000A43F57 /* coin.png in Resources */,
+				FCF2880E24FC8B350064F674 /* sconscript in Resources */,
+				FCF2881624FC8B350064F674 /* json_internalmap.inl in Resources */,
 				1AF87B891F6F781D007BE51C /* LaunchScreenBackground.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				1AF87B881F6F781D007BE51C /* LaunchScreen.storyboard in Resources */,
@@ -587,7 +683,11 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
+				FCF2880F24FC8B350064F674 /* sconscript in Resources */,
 				FCE594E024F8AF9000A43F57 /* coin.png in Resources */,
+				FCF2881524FC8B350064F674 /* json_valueiterator.inl in Resources */,
+				FCF2880B24FC8B350064F674 /* json_internalarray.inl in Resources */,
+				FCF2881724FC8B350064F674 /* json_internalmap.inl in Resources */,
 				FCE594DD24F8AA4200A43F57 /* red.png in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
@@ -602,7 +702,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF87B781F6F77F7007BE51C /* AppController.mm in Sources */,
+				FCF2880C24FC8B350064F674 /* json_value.cpp in Sources */,
 				FCAF0D9024F781CD00698B22 /* LobbyScene.cpp in Sources */,
+				FCF2881024FC8B350064F674 /* json_reader.cpp in Sources */,
+				FCF2882B24FCE3070064F674 /* EditorIO.cpp in Sources */,
 				FCAF0DBF24F79E7000698B22 /* ResultLayerController.cpp in Sources */,
 				FCAF0D9E24F789D100698B22 /* MainLayerController.cpp in Sources */,
 				FCAF0DA224F789E600698B22 /* MainLayer.cpp in Sources */,
@@ -611,8 +714,11 @@
 				1AF87B8B1F6F782A007BE51C /* RootViewController.mm in Sources */,
 				FCAF0DC324F79ECE00698B22 /* RewardLayerController.cpp in Sources */,
 				FCAF0DAF24F79B8E00698B22 /* GameLayer.cpp in Sources */,
+				FCF2881F24FCDDDF0064F674 /* EditorScene.cpp in Sources */,
 				FCAF0DB724F79D4D00698B22 /* ResultLayer.cpp in Sources */,
+				FC2C614024F901D800A23D0B /* DataIO.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				FCF2882724FCDED70064F674 /* EditorController.cpp in Sources */,
 				FCAF0D9524F785F000698B22 /* LobbyLayer.cpp in Sources */,
 				FCAF0DB324F79BFF00698B22 /* GameLayerController.cpp in Sources */,
 				1AF87B8A1F6F7822007BE51C /* main.m in Sources */,
@@ -620,6 +726,8 @@
 				FCAF0DAB24F79B4200698B22 /* GameScene.cpp in Sources */,
 				FCAF0D7F24F7744900698B22 /* TitleScene.cpp in Sources */,
 				FCAF0D8724F7750D00698B22 /* TitleLayer.cpp in Sources */,
+				FCF2881224FC8B350064F674 /* json_writer.cpp in Sources */,
+				FCF2882324FCDE850064F674 /* EditorLayer.cpp in Sources */,
 				FCAF0D9A24F786F400698B22 /* LobbyLayerController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +736,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF2881324FC8B350064F674 /* json_writer.cpp in Sources */,
 				FCAF0D9F24F789D100698B22 /* MainLayerController.cpp in Sources */,
 				FCAF0DC424F79ECE00698B22 /* RewardLayerController.cpp in Sources */,
 				FCAF0D9B24F786F400698B22 /* LobbyLayerController.cpp in Sources */,
@@ -639,12 +748,19 @@
 				FCAF0DC024F79E7000698B22 /* ResultLayerController.cpp in Sources */,
 				FCAF0D8824F7750D00698B22 /* TitleLayer.cpp in Sources */,
 				FCAF0DAC24F79B4200698B22 /* GameScene.cpp in Sources */,
+				FC2C614124F901D800A23D0B /* DataIO.cpp in Sources */,
+				FCF2882024FCDDDF0064F674 /* EditorScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				FCF2882824FCDED70064F674 /* EditorController.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				FCAF0D9624F785F000698B22 /* LobbyLayer.cpp in Sources */,
 				FCAF0DB824F79D4D00698B22 /* ResultLayer.cpp in Sources */,
+				FCF2881124FC8B350064F674 /* json_reader.cpp in Sources */,
 				FCAF0D9124F781CD00698B22 /* LobbyScene.cpp in Sources */,
+				FCF2882424FCDE850064F674 /* EditorLayer.cpp in Sources */,
+				FCF2880D24FC8B350064F674 /* json_value.cpp in Sources */,
 				FCAF0D8C24F776FB00698B22 /* TitleLayerController.cpp in Sources */,
+				FCF2882C24FCE3070064F674 /* EditorIO.cpp in Sources */,
 				FCAF0D8024F7744900698B22 /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -865,7 +981,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design_Temp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

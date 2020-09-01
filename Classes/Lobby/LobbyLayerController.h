@@ -15,6 +15,7 @@ class LobbyLayerController : public cocos2d::Node
     
 public:
     void Change_MainLayer(cocos2d::Ref* pSender);
+    void TicketBuy(cocos2d::Ref* pSender);
     
 public:
     LobbyLayerController(LobbyLayer* layer);

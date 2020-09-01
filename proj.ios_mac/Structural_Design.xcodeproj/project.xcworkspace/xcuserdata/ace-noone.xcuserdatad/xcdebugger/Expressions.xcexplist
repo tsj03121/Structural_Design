@@ -8,13 +8,24 @@
             <PersistentString
                value = "moveSpeed_">
             </PersistentString>
+            <PersistentString
+               value = "pSprite_">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "GameLayerController::PlayerInfoUpdate():GameLayerController.cpp">
+         contextName = "cocos2d::FileUtils::getFileData(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;, char const*, long*) const:CCFileUtils.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "(ssize_t *) bufferSize">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "TitleLayer::init():TitleLayer.cpp">
+         contextName = "DataIO::readJSON():DataIO.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GameLayerController::PlayerInfoUpdate():GameLayerController.cpp">
       </ContextState>
       <ContextState
          contextName = "GameLayerController::CoinCheck(cocos2d::Layer*, cocos2d::Sprite*):GameLayerController.cpp">
@@ -23,6 +34,9 @@
                value = "playerInfo">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TitleLayer::init():TitleLayer.cpp">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -11,6 +11,10 @@
 class GameLayer : public cocos2d::Layer
 {
 public:
+    float x = _director->getWinSize().width;
+    float y = _director->getWinSize().height;
+    int spriteSize = 30;
+public:
     static cocos2d::Layer* createLayer();
 
     virtual bool init();    
@@ -18,6 +22,9 @@ public:
     CREATE_FUNC(GameLayer);\
     
 public:
+    void PlayerCreate();
+    void CoinCreate();
+    void Load();
     void Timer(float dt);
 };
 
