@@ -44,7 +44,7 @@ void GameLayerController::MoveUP(cocos2d::Ref* pSender)
     Sprite* player = (Sprite*) layer->getChildByName("Player");
     player->setPosition(player->getPosition().x, player->getPosition().y + moveSpeed_);
     
-    CoinCheck(layer, player);
+    CollisionChecks(layer, player);
 }
 void GameLayerController::MoveDOWN(cocos2d::Ref* pSender)
 {
@@ -53,7 +53,7 @@ void GameLayerController::MoveDOWN(cocos2d::Ref* pSender)
     Sprite* player = (Sprite*) layer->getChildByName("Player");
     player->setPosition(player->getPosition().x, (player->getPosition().y - moveSpeed_));
 
-    CoinCheck(layer, player);
+    CollisionChecks(layer, player);
 }
 void GameLayerController::MoveLEFT(cocos2d::Ref* pSender)
 {
@@ -62,7 +62,7 @@ void GameLayerController::MoveLEFT(cocos2d::Ref* pSender)
     Sprite* player = (Sprite*) layer->getChildByName("Player");
     player->setPosition(player->getPosition().x - moveSpeed_, player->getPosition().y);
     
-    CoinCheck(layer, player);
+    CollisionChecks(layer, player);
 }
 void GameLayerController::MoveRIGHT(cocos2d::Ref* pSender)
 {
@@ -71,7 +71,13 @@ void GameLayerController::MoveRIGHT(cocos2d::Ref* pSender)
     Sprite* player = (Sprite*) layer->getChildByName("Player");
     player->setPosition(player->getPosition().x + moveSpeed_, player->getPosition().y);
     
+    CollisionChecks(layer, player);
+}
+
+void GameLayerController::CollisionChecks(Layer* layer, Sprite* player)
+{
     CoinCheck(layer, player);
+    TrapCheck(layer, player);
 }
 
 void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
@@ -79,6 +85,12 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
     Sprite* coin = (Sprite*) layer->getChildByName("Coin");
     Vector<Node*> children = layer->getChildren();
     
+    if(coin == nullptr)
+    {
+        NextMap(layer);
+        return;
+    }
+        
     for(auto child : children)
     {
         if(child->getName() != "Coin")
@@ -93,14 +105,97 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
             PlayerInfo playerInfo = PlayerInfo::getInstance();
             PlayerInfoUpdate(playerInfo);
             
-            Sprite* nextCoin = (Sprite*) layer->getChildByName("Coin");
-            if(nextCoin == nullptr)
+            Sprite* coin = (Sprite*) layer->getChildByName("Coin");
+            Sprite* boss = (Sprite*) layer->getChildByName("Boss");
+            if(coin != nullptr)
+                continue;
+            if(boss != nullptr)
+                continue;
+            
+            NextMap(layer);
+            return;
+        }
+    }
+}
+
+void GameLayerController::NextMap(Layer* layer)
+{
+    PlayerInfo playerInfo = PlayerInfo::getInstance();
+    DataIO* dataIO = DataIO::getInstance();
+    
+    std::string fileName = "";
+    fileName.append("Save");
+    fileName.append(std::to_string(playerInfo.pPlayerInfo_->playMapCount_ + 1));
+    fileName.append(".json");
+    
+    std::string filePath = FileUtils::getInstance()->getWritablePath();
+    filePath.append(fileName);
+    
+    bool isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
+
+    if(!isFileCheck)
+    {
+        int nowScore = playerInfo.pPlayerInfo_->getNowScore();
+        playerInfo.pPlayerInfo_->addTotalScore(nowScore);
+        playerInfo.pPlayerInfo_->setHighScore(nowScore);
+        playerInfo.pPlayerInfo_->setShortClearTime(playerInfo.pPlayerInfo_->clearTime_);
+        playerInfo.pPlayerInfo_->playMapCount_ = -1;
+        Change_ResultLayer(layer);
+        return;
+    }
+    
+    Vector<Node*> nodes = layer->getChildren();
+    for(auto childSprite : nodes)
+    {
+        if(childSprite == layer->getChildByName("ClearTimeLabel"))
+            continue;
+        if(childSprite == layer->getChildByName("Controller"))
+            continue;
+        if(childSprite == layer->getChildByName("Menu"))
+            continue;
+        
+        layer->removeChild(childSprite);
+    }
+    
+    float x = _director->getWinSize().width;
+    float y = _director->getWinSize().height;
+    
+    for(int heart_i = 0; heart_i < playerInfo.pPlayerInfo_->playerHeart_; ++heart_i)
+    {
+        Sprite* heartSprite = Sprite::create("heart.png");
+        heartSprite->setScale(0.3, 0.3);
+        heartSprite->setPosition(x * 0.9 + (heart_i * -25), y * 0.93);
+        layer->addChild(heartSprite, 4, "Heart");
+    }
+    
+    playerInfo.pPlayerInfo_->playMapCount_ += 1;
+    dataIO->readMapJSON(layer, fileName);
+}
+
+void GameLayerController::TrapCheck(Layer* layer, Sprite* player)
+{
+    Sprite* trap = (Sprite*) layer->getChildByName("Trap");
+    Vector<Node*> children = layer->getChildren();
+    
+    for(auto child : children)
+    {
+        if(child->getName() != "Trap")
+            continue;
+        
+        Rect playerBox = player->getBoundingBox();
+        Rect trapBox = child->getBoundingBox();
+        
+        if(playerBox.intersectsRect(trapBox))
+        {
+            PlayerInfo playerInfo = PlayerInfo::getInstance();
+            playerInfo.pPlayerInfo_->playerHeart_ -= 1;
+            
+            layer->removeChildByName("Heart");
+            
+            if(playerInfo.pPlayerInfo_->playerHeart_ <= 0)
             {
-                int nowScore = playerInfo.pPlayerInfo_->getNowScore();
-                playerInfo.pPlayerInfo_->addTotalScore(nowScore);
-                playerInfo.pPlayerInfo_->setHighScore(nowScore);
-                playerInfo.pPlayerInfo_->setShortClearTime(playerInfo.pPlayerInfo_->clearTime_);
-                Change_ResultLayer(layer);
+                playerInfo.pPlayerInfo_->playMapCount_ = -1;
+                _director->popScene();
             }
         }
     }

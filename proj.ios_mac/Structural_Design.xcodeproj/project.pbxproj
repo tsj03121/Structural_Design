@@ -59,6 +59,10 @@
 		FC2C614124F901D800A23D0B /* DataIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC2C613F24F901D800A23D0B /* DataIO.cpp */; };
 		FC4DD13A24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */; };
 		FC4DD13B24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */; };
+		FC57D75724FF28070061FE4B /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75524FF28070061FE4B /* heart.png */; };
+		FC57D75824FF28070061FE4B /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75524FF28070061FE4B /* heart.png */; };
+		FC57D75A24FF820A0061FE4B /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75924FF820A0061FE4B /* boss.png */; };
+		FC57D75B24FF820A0061FE4B /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75924FF820A0061FE4B /* boss.png */; };
 		FCAF0D7F24F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8024F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8724F7750D00698B22 /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D8624F7750D00698B22 /* TitleLayer.cpp */; };
@@ -208,6 +212,8 @@
 		FC2C613F24F901D800A23D0B /* DataIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataIO.cpp; sourceTree = "<group>"; };
 		FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMapLayerController.h; sourceTree = "<group>"; };
 		FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMapLayerController.cpp; sourceTree = "<group>"; };
+		FC57D75524FF28070061FE4B /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		FC57D75924FF820A0061FE4B /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
 		FCAF0D7C24F7743C00698B22 /* TitleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		FCAF0D7E24F7744900698B22 /* TitleScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		FCAF0D8524F7750500698B22 /* TitleLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleLayer.h; sourceTree = "<group>"; };
@@ -399,6 +405,8 @@
 				FCE594DB24F8AA4200A43F57 /* red.png */,
 				FCE594DE24F8AF9000A43F57 /* coin.png */,
 				FCBF350224FF23B5004ABFFE /* trap.png */,
+				FC57D75524FF28070061FE4B /* heart.png */,
+				FC57D75924FF820A0061FE4B /* boss.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -668,6 +676,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC57D75724FF28070061FE4B /* heart.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				FCF2881424FC8B350064F674 /* json_valueiterator.inl in Resources */,
 				1A88B2641FC3D9C9005C14AE /* Images.xcassets in Resources */,
@@ -676,6 +685,7 @@
 				FCF2880A24FC8B350064F674 /* json_internalarray.inl in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				FC57D75A24FF820A0061FE4B /* boss.png in Resources */,
 				FCE594DF24F8AF9000A43F57 /* coin.png in Resources */,
 				FCF2880E24FC8B350064F674 /* sconscript in Resources */,
 				FCF2881624FC8B350064F674 /* json_internalmap.inl in Resources */,
@@ -694,12 +704,14 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
+				FC57D75824FF28070061FE4B /* heart.png in Resources */,
 				FCF2880F24FC8B350064F674 /* sconscript in Resources */,
 				FCE594E024F8AF9000A43F57 /* coin.png in Resources */,
 				FCF2881524FC8B350064F674 /* json_valueiterator.inl in Resources */,
 				FCF2880B24FC8B350064F674 /* json_internalarray.inl in Resources */,
 				FCBF350524FF23B5004ABFFE /* trap.png in Resources */,
 				FCF2881724FC8B350064F674 /* json_internalmap.inl in Resources */,
+				FC57D75B24FF820A0061FE4B /* boss.png in Resources */,
 				FCE594DD24F8AA4200A43F57 /* red.png in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,

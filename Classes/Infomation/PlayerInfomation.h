@@ -11,10 +11,12 @@
 class PlayerInfo
 {
 public:
+    int playerHeart_ = 3;
     int clearTime_ = 0;
     int shortClearTime_ = NULL;
     int coinScore_ = 10;
     int coinMoney_ = 100;
+    int playMapCount_ = -1;
     
 private:
     unsigned int highScore_ = 0;

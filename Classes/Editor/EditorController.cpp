@@ -38,6 +38,14 @@ void EditorController::CoinSelect(Ref *pSender)
     MenuVisibility(false);
 }
 
+void EditorController::TrapSelect(Ref *pSender)
+{
+    mySelect_ = SelectSprite::Trap;
+    pSprite_ = Sprite::create("trap.png");
+    pSprite_->retain();
+    MenuVisibility(false);
+}
+
 bool EditorController::onTouchBegan(Touch *touch, Event *event)
 {
     auto touchPoint = touch->getLocation();
@@ -50,20 +58,22 @@ bool EditorController::onTouchBegan(Touch *touch, Event *event)
         Sprite* lastSprite;
         for(auto sprite : sprites)
         {
-            if(sprite->getName() == "Coin")
+            if(sprite->getName() == "Menu2")
+                continue;
+            
+            Rect spriteRect = sprite->getBoundingBox();
+            if(spriteRect.containsPoint(touchPoint))
             {
-                Rect coinRect = sprite->getBoundingBox();
-                if(coinRect.containsPoint(touchPoint))
-                {
-                    lastSprite = (Sprite*) sprite;
-                }
+                lastSprite = (Sprite*) sprite;
             }
         }
-        layer->removeChild(lastSprite);
+        
+        if(lastSprite != nullptr)
+        {
+            layer->removeChild(lastSprite);
+        }
     }
-    
-    log("onTouchBegan id = %d, x = %f, y = %f", touch->getID(), touchPoint.x, touchPoint.y);
-    
+
     if(pSprite_ != nullptr)
     {
         if(mySelect_ == SelectSprite::Player)
@@ -71,9 +81,13 @@ bool EditorController::onTouchBegan(Touch *touch, Event *event)
             layer->addChild(pSprite_, 2, "Player");
             isPlayerCreate_ = true;
         }
-        else
+        else if(mySelect_ == SelectSprite::Coin)
         {
             layer->addChild(pSprite_, 1, "Coin");
+        }
+        else if(mySelect_ == SelectSprite::Trap)
+        {
+            layer->addChild(pSprite_, 1, "Trap");
         }
         
         pSprite_->setPosition(touchPoint.x, touchPoint.y);
@@ -100,6 +114,9 @@ void EditorController::MenuVisibility(bool isVisible)
 
 void EditorController::SaveEditor(cocos2d::Ref *pSender, Layer* layer)
 {
+    if((Sprite*)layer->getChildByName("Player") == nullptr)
+        return;
+    
     DataIO* dataIO = DataIO::getInstance();
     dataIO->writeMapJSON(layer);
     

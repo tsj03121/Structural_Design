@@ -28,7 +28,7 @@ bool LoadMapLayer::init()
     {
         return false;
     }
-    log("X = %d, Y = %d", this->getContentSize().width, this->getContentSize().height);
+
     float x = _director->getWinSize().width;
     float y = _director->getWinSize().height;
     

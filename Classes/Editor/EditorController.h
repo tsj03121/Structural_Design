@@ -11,7 +11,8 @@
 enum SelectSprite
 {
     Player,
-    Coin
+    Coin,
+    Trap
 };
 
 class EditorController : public cocos2d::Node
@@ -26,6 +27,7 @@ public:
     void MenuVisibility(bool isVisible);
     void PlayerSelect(cocos2d::Ref* pSender, cocos2d::Layer* layer);
     void CoinSelect(cocos2d::Ref* pSender);
+    void TrapSelect(cocos2d::Ref* pSender);
     void SaveEditor(cocos2d::Ref* pSender, cocos2d::Layer* layer);
     void Goto_Lobby(cocos2d::Ref* pSender);
     void LoadMapList(cocos2d::Ref* pSender);

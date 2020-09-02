@@ -62,27 +62,11 @@ void DataIO::readUserData(std::string pData)
     pPlayerInfo.pPlayerInfo_->setShortClearTime(time);
     pPlayerInfo.pPlayerInfo_->addMoney(money);
     pPlayerInfo.pPlayerInfo_->setTicket(ticket);
-    
-
-//    배열 읽을 때
-//    const Json::Value array = root["a"];
-//    for (unsigned int i = 0; i < array.size(); ++i)
-//    {
-//        int item = array[i].asInt();
-//        log("%d, ", item);
-//    }
-    
 }
 
 void DataIO::writeJSON()
 {
     PlayerInfo pPlayerInfo = PlayerInfo::getInstance();
-    
-    //배열 쓰기 사용방법
-    //Json::Value friends;
-    //    friends.append("Im Kkeokjung");
-    //    friends.append("Elisabeth");
-    //    root["Friend"] = friends;
 
     Json::Value root;
     root["HighScore"] = pPlayerInfo.pPlayerInfo_->getHighScore();
@@ -148,14 +132,23 @@ void DataIO::readMapData(std::string pData, Layer* layer)
     player->setPosition(root.get("PlayerX", "defaultvalue").asDouble(), root.get("PlayerY", "defaultvalue").asDouble());
     layer->addChild(player, 2, "Player");
     
-    const Json::Value arrayX = root["CoinX"];
-    const Json::Value arrayY = root["CoinY"];
-    for (int posX = 0; posX < arrayX.size(); ++posX)
+    const Json::Value coinArrayX = root["CoinX"];
+    const Json::Value coinArrayY = root["CoinY"];
+    for (int posX = 0; posX < coinArrayX.size(); ++posX)
     {
         Sprite* coin = Sprite::create("coin.png");
         coin->setScale(0.05, 0.05);
-        coin->setPosition(arrayX[posX].asDouble(), arrayY[posX].asDouble());
+        coin->setPosition(coinArrayX[posX].asDouble(), coinArrayY[posX].asDouble());
         layer->addChild(coin, 1, "Coin");
+    }
+    
+    const Json::Value trapArrayX = root["TrapX"];
+    const Json::Value trapArrayY = root["TrapY"];
+    for (int posX = 0; posX < trapArrayX.size(); ++posX)
+    {
+        Sprite* trap = Sprite::create("trap.png");
+        trap->setPosition(trapArrayX[posX].asDouble(), trapArrayY[posX].asDouble());
+        layer->addChild(trap, 1, "Trap");
     }
 }
 
@@ -168,6 +161,8 @@ void DataIO::writeMapJSON(Layer* layer)
     
     Json::Value coinX;
     Json::Value coinY;
+    Json::Value trapX;
+    Json::Value trapY;
     Vector<Node*> node = layer->getChildren();
     for(Node* sprites : node)
     {
@@ -177,9 +172,16 @@ void DataIO::writeMapJSON(Layer* layer)
             coinX.append(sprite->getPosition().x);
             coinY.append(sprite->getPosition().y);
         }
+        else if(sprite->getName() == "Trap")
+        {
+            trapX.append(sprite->getPosition().x);
+            trapY.append(sprite->getPosition().y);
+        }
     }
     root["CoinX"] = coinX;
     root["CoinY"] = coinY;
+    root["TrapX"] = trapX;
+    root["TrapY"] = trapY;
     
     Json::StyledWriter writer;
     std::string strJSON = writer.write(root);

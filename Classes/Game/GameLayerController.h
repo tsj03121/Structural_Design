@@ -15,12 +15,15 @@ public:
     
 public:
     void Timer(float dt);
+    void NextMap(cocos2d::Layer* layer);
     void MoveUP(cocos2d::Ref* pSender);
     void MoveDOWN(cocos2d::Ref* pSender);
     void MoveLEFT(cocos2d::Ref* pSender);
     void MoveRIGHT(cocos2d::Ref* pSender);
     void Change_ResultLayer(cocos2d::Ref* pSender);
+    void CollisionChecks(cocos2d::Layer* gameLayer, cocos2d::Sprite* coinSprite);
     void CoinCheck(cocos2d::Layer* gameLayer, cocos2d::Sprite* coinSprite);
+    void TrapCheck(cocos2d::Layer* gameLayer, cocos2d::Sprite* coinSprite);
     void PlayerInfoUpdate(PlayerInfo playerInfo);
     
     std::string TimerPrint(int t);
