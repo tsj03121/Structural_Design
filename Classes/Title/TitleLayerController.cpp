@@ -20,6 +20,7 @@ void TitleLayerController::Goto_LobbyScene(Ref* pSender)
     pDataIO->readJSON();
 
     Scene* lobby = LobbyScene::createScene();
+    lobby->setName("Lobby");
     _director->replaceScene(lobby);
 }
 

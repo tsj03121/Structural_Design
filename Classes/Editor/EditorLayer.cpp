@@ -34,7 +34,6 @@ bool EditorLayer::init()
     EditorController* pEditorController = new EditorController();
     addChild(pEditorController, -1, "Controller");
     
-    
     MenuItemImage* menuItem1 = MenuItemImage::create("red.png", "red.png", CC_CALLBACK_1(EditorController::PlayerSelect, pEditorController, this));
     menuItem1->setScale(0.3, 0.3);
     MenuItemImage* menuItem2 = MenuItemImage::create("coin.png", "coin.png", CC_CALLBACK_1(EditorController::CoinSelect, pEditorController));
@@ -49,9 +48,11 @@ bool EditorLayer::init()
     menuItemFont1->setScale(0.3, 0.3);
     MenuItemFont* menuItemFont2 = MenuItemFont::create("뒤로가기", CC_CALLBACK_1(EditorController::Goto_Lobby, pEditorController));
     menuItemFont2->setScale(0.3, 0.3);
+    MenuItemFont* menuItemFont3 = MenuItemFont::create("불러오기", CC_CALLBACK_1(EditorController::LoadMapList, pEditorController));
+    menuItemFont3->setScale(0.3, 0.3);
     
-    Menu* menu2 = Menu::create(menuItemFont1, menuItemFont2, NULL);
-    menu2->setPosition(x * 0.9, y * 0.1);
+    Menu* menu2 = Menu::create(menuItemFont1, menuItemFont2, menuItemFont3, NULL);
+    menu2->setPosition(x * 0.85, y * 0.1);
     menu2->alignItemsHorizontally();
     addChild(menu2, 3, "Menu2");
     

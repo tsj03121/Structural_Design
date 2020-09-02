@@ -12,7 +12,8 @@ class DataIO
 {
 public:
     static DataIO* pDataIO;
-    int dataCount = 5;
+    //int dataCount = 5;
+    std::string openFileName = "";
     
 public:
     static DataIO* getInstance();
@@ -25,10 +26,12 @@ public:
     void writeJSON();
     void writeUserData(std::string pszFileName, const char* pData);
     
-    void readMapJSON(cocos2d::Layer* layer);
+    void readMapJSON(cocos2d::Layer* layer, std::string fileName);
     void readMapData(std::string pData, cocos2d::Layer* layer);
     void writeMapJSON(cocos2d::Layer* layer);
     void writeMapData(std::string pszFileName, const char* pData);
+    
+    std::list<std::string> FileExist();
 };
 
 #endif /* DataIO_h */

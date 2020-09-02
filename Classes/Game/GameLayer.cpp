@@ -112,9 +112,3 @@ void GameLayer::CoinCreate()
         addChild(coinSprite, 1, "Coin");
     }
 }
-
-void GameLayer::Load()
-{
-    DataIO* dataIO = DataIO::getInstance();
-    dataIO->readMapJSON(this);
-}

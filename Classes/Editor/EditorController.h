@@ -28,7 +28,7 @@ public:
     void CoinSelect(cocos2d::Ref* pSender);
     void SaveEditor(cocos2d::Ref* pSender, cocos2d::Layer* layer);
     void Goto_Lobby(cocos2d::Ref* pSender);
-    
+    void LoadMapList(cocos2d::Ref* pSender);
     
     
 public:

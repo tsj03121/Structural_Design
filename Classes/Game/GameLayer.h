@@ -24,7 +24,6 @@ public:
 public:
     void PlayerCreate();
     void CoinCreate();
-    void Load();
     void Timer(float dt);
 };
 

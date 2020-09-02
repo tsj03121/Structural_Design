@@ -12,6 +12,8 @@
 #include "PlayerInfomation.h"
 #include "GameLayer.h"
 #include "EditorScene.h"
+#include "DataIO.h"
+#include "LoadMapLayer.h"
 
 USING_NS_CC;
 
@@ -40,19 +42,12 @@ void MainLayerController::Change_LobbyLayer(Ref* pSender)
 
 void MainLayerController::Load_Map(Ref* pSender)
 {
-    PlayerInfo playerInfo = PlayerInfo::getInstance();
-    if(playerInfo.pPlayerInfo_->getTicket() > 0)
-    {
-        playerInfo.pPlayerInfo_->setTicket(playerInfo.pPlayerInfo_->getTicket()-1);
-        Scene* game = GameScene::createScene();
-        GameLayer* layer = (GameLayer*) game->getChildByName("View")->getChildByName("Layer");
-        layer->Load();
-        _director->pushScene(game);
-    }
+    Layer* loadLayer = LoadMapLayer::create();
 }
 
 void MainLayerController::Goto_MapEditor(Ref* pSender)
 {
     EditorScene* scene = EditorScene::create();
+    scene->setName("Editor");
     _director->pushScene(scene);
 }

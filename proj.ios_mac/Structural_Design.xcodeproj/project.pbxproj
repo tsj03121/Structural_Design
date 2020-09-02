@@ -53,8 +53,12 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
+		FC10E74124FDF7330061D903 /* LoadMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */; };
+		FC10E74224FDF7330061D903 /* LoadMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */; };
 		FC2C614024F901D800A23D0B /* DataIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC2C613F24F901D800A23D0B /* DataIO.cpp */; };
 		FC2C614124F901D800A23D0B /* DataIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC2C613F24F901D800A23D0B /* DataIO.cpp */; };
+		FC4DD13A24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */; };
+		FC4DD13B24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */; };
 		FCAF0D7F24F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8024F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8724F7750D00698B22 /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D8624F7750D00698B22 /* TitleLayer.cpp */; };
@@ -85,6 +89,8 @@
 		FCAF0DC024F79E7000698B22 /* ResultLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0DBE24F79E7000698B22 /* ResultLayerController.cpp */; };
 		FCAF0DC324F79ECE00698B22 /* RewardLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0DC224F79ECE00698B22 /* RewardLayerController.cpp */; };
 		FCAF0DC424F79ECE00698B22 /* RewardLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0DC224F79ECE00698B22 /* RewardLayerController.cpp */; };
+		FCBF350424FF23B5004ABFFE /* trap.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF350224FF23B5004ABFFE /* trap.png */; };
+		FCBF350524FF23B5004ABFFE /* trap.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBF350224FF23B5004ABFFE /* trap.png */; };
 		FCE594D924F88FC500A43F57 /* PlayerInfomation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE594D824F88FC500A43F57 /* PlayerInfomation.cpp */; };
 		FCE594DA24F88FC500A43F57 /* PlayerInfomation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE594D824F88FC500A43F57 /* PlayerInfomation.cpp */; };
 		FCE594DC24F8AA4200A43F57 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = FCE594DB24F8AA4200A43F57 /* red.png */; };
@@ -111,8 +117,6 @@
 		FCF2882424FCDE850064F674 /* EditorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882224FCDE850064F674 /* EditorLayer.cpp */; };
 		FCF2882724FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
 		FCF2882824FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
-		FCF2882B24FCE3070064F674 /* EditorIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882A24FCE3070064F674 /* EditorIO.cpp */; };
-		FCF2882C24FCE3070064F674 /* EditorIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882A24FCE3070064F674 /* EditorIO.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,8 +202,12 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		FC10E73F24FDF7270061D903 /* LoadMapLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMapLayer.h; sourceTree = "<group>"; };
+		FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMapLayer.cpp; sourceTree = "<group>"; };
 		FC2C613D24F901CE00A23D0B /* DataIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataIO.h; sourceTree = "<group>"; };
 		FC2C613F24F901D800A23D0B /* DataIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataIO.cpp; sourceTree = "<group>"; };
+		FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMapLayerController.h; sourceTree = "<group>"; };
+		FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMapLayerController.cpp; sourceTree = "<group>"; };
 		FCAF0D7C24F7743C00698B22 /* TitleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		FCAF0D7E24F7744900698B22 /* TitleScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		FCAF0D8524F7750500698B22 /* TitleLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleLayer.h; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 		FCAF0DBE24F79E7000698B22 /* ResultLayerController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResultLayerController.cpp; sourceTree = "<group>"; };
 		FCAF0DC124F79EC700698B22 /* RewardLayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewardLayerController.h; sourceTree = "<group>"; };
 		FCAF0DC224F79ECE00698B22 /* RewardLayerController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RewardLayerController.cpp; sourceTree = "<group>"; };
+		FCBF350224FF23B5004ABFFE /* trap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trap.png; sourceTree = "<group>"; };
 		FCE594D724F88FB500A43F57 /* PlayerInfomation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerInfomation.h; sourceTree = "<group>"; };
 		FCE594D824F88FC500A43F57 /* PlayerInfomation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInfomation.cpp; sourceTree = "<group>"; };
 		FCE594DB24F8AA4200A43F57 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
@@ -256,8 +265,6 @@
 		FCF2882224FCDE850064F674 /* EditorLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorLayer.cpp; sourceTree = "<group>"; };
 		FCF2882524FCDED00064F674 /* EditorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorController.h; sourceTree = "<group>"; };
 		FCF2882624FCDED70064F674 /* EditorController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorController.cpp; sourceTree = "<group>"; };
-		FCF2882924FCE2FF0064F674 /* EditorIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorIO.h; sourceTree = "<group>"; };
-		FCF2882A24FCE3070064F674 /* EditorIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorIO.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +398,7 @@
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
 				FCE594DB24F8AA4200A43F57 /* red.png */,
 				FCE594DE24F8AF9000A43F57 /* coin.png */,
+				FCBF350224FF23B5004ABFFE /* trap.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -464,8 +472,12 @@
 			children = (
 				FCAF0DA124F789E600698B22 /* MainLayer.cpp */,
 				FCAF0DA024F789DD00698B22 /* MainLayer.h */,
-				FCAF0D9C24F789B100698B22 /* MainLayerController.h */,
 				FCAF0D9D24F789D100698B22 /* MainLayerController.cpp */,
+				FCAF0D9C24F789B100698B22 /* MainLayerController.h */,
+				FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */,
+				FC10E73F24FDF7270061D903 /* LoadMapLayer.h */,
+				FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */,
+				FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -550,8 +562,6 @@
 				FCF2882224FCDE850064F674 /* EditorLayer.cpp */,
 				FCF2882524FCDED00064F674 /* EditorController.h */,
 				FCF2882624FCDED70064F674 /* EditorController.cpp */,
-				FCF2882924FCE2FF0064F674 /* EditorIO.h */,
-				FCF2882A24FCE3070064F674 /* EditorIO.cpp */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -669,6 +679,7 @@
 				FCE594DF24F8AF9000A43F57 /* coin.png in Resources */,
 				FCF2880E24FC8B350064F674 /* sconscript in Resources */,
 				FCF2881624FC8B350064F674 /* json_internalmap.inl in Resources */,
+				FCBF350424FF23B5004ABFFE /* trap.png in Resources */,
 				1AF87B891F6F781D007BE51C /* LaunchScreenBackground.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				1AF87B881F6F781D007BE51C /* LaunchScreen.storyboard in Resources */,
@@ -687,6 +698,7 @@
 				FCE594E024F8AF9000A43F57 /* coin.png in Resources */,
 				FCF2881524FC8B350064F674 /* json_valueiterator.inl in Resources */,
 				FCF2880B24FC8B350064F674 /* json_internalarray.inl in Resources */,
+				FCBF350524FF23B5004ABFFE /* trap.png in Resources */,
 				FCF2881724FC8B350064F674 /* json_internalmap.inl in Resources */,
 				FCE594DD24F8AA4200A43F57 /* red.png in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
@@ -705,7 +717,7 @@
 				FCF2880C24FC8B350064F674 /* json_value.cpp in Sources */,
 				FCAF0D9024F781CD00698B22 /* LobbyScene.cpp in Sources */,
 				FCF2881024FC8B350064F674 /* json_reader.cpp in Sources */,
-				FCF2882B24FCE3070064F674 /* EditorIO.cpp in Sources */,
+				FC4DD13A24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */,
 				FCAF0DBF24F79E7000698B22 /* ResultLayerController.cpp in Sources */,
 				FCAF0D9E24F789D100698B22 /* MainLayerController.cpp in Sources */,
 				FCAF0DA224F789E600698B22 /* MainLayer.cpp in Sources */,
@@ -726,6 +738,7 @@
 				FCAF0DAB24F79B4200698B22 /* GameScene.cpp in Sources */,
 				FCAF0D7F24F7744900698B22 /* TitleScene.cpp in Sources */,
 				FCAF0D8724F7750D00698B22 /* TitleLayer.cpp in Sources */,
+				FC10E74124FDF7330061D903 /* LoadMapLayer.cpp in Sources */,
 				FCF2881224FC8B350064F674 /* json_writer.cpp in Sources */,
 				FCF2882324FCDE850064F674 /* EditorLayer.cpp in Sources */,
 				FCAF0D9A24F786F400698B22 /* LobbyLayerController.cpp in Sources */,
@@ -742,6 +755,7 @@
 				FCAF0D9B24F786F400698B22 /* LobbyLayerController.cpp in Sources */,
 				FCAF0DA324F789E600698B22 /* MainLayer.cpp in Sources */,
 				FCAF0DBC24F79D5E00698B22 /* RewardLayer.cpp in Sources */,
+				FC10E74224FDF7330061D903 /* LoadMapLayer.cpp in Sources */,
 				FCAF0DB024F79B8E00698B22 /* GameLayer.cpp in Sources */,
 				FCE594DA24F88FC500A43F57 /* PlayerInfomation.cpp in Sources */,
 				FCAF0DB424F79BFF00698B22 /* GameLayerController.cpp in Sources */,
@@ -758,9 +772,9 @@
 				FCF2881124FC8B350064F674 /* json_reader.cpp in Sources */,
 				FCAF0D9124F781CD00698B22 /* LobbyScene.cpp in Sources */,
 				FCF2882424FCDE850064F674 /* EditorLayer.cpp in Sources */,
+				FC4DD13B24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */,
 				FCF2880D24FC8B350064F674 /* json_value.cpp in Sources */,
 				FCAF0D8C24F776FB00698B22 /* TitleLayerController.cpp in Sources */,
-				FCF2882C24FCE3070064F674 /* EditorIO.cpp in Sources */,
 				FCAF0D8024F7744900698B22 /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

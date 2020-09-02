@@ -117,16 +117,16 @@ void DataIO::writeUserData(std::string pszFileName, const char* pData)
 }
 
 
-void DataIO::readMapJSON(Layer* layer)
+void DataIO::readMapJSON(Layer* layer, std::string fileName)
 {
-    std::string fileName = FileUtils::getInstance()->getWritablePath();
-    fileName.append("\Save1.json");
+    std::string filePath = FileUtils::getInstance()->getWritablePath();
+    filePath.append(fileName);
     
-    if(fileName == "")
+    if(filePath == "")
         return;
     
     unsigned long bufferSize = 0;
-    unsigned char* json = FileUtils::sharedFileUtils()->getFileData(fileName.c_str(), "rb", (ssize_t *) &bufferSize);
+    unsigned char* json = FileUtils::sharedFileUtils()->getFileData(filePath.c_str(), "rb", (ssize_t *) &bufferSize);
     std::string clearData((const char*)json, bufferSize);
     
     readMapData(clearData, layer);
@@ -184,16 +184,27 @@ void DataIO::writeMapJSON(Layer* layer)
     Json::StyledWriter writer;
     std::string strJSON = writer.write(root);
     std::string filePath = FileUtils::getInstance()->getWritablePath();
-    filePath.append("\Save1.json");
-    bool isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
-    int count = 2;
-    while(isFileCheck)
+    if(openFileName == "")
     {
-        filePath = FileUtils::getInstance()->getWritablePath();
-        filePath.append("\Save");
-        filePath.append(std::to_string(count));
-        filePath.append(".json");
-        isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
+        filePath.append("Save1.json");
+        
+        bool isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
+        int count = 2;
+        
+        while(isFileCheck)
+        {
+            filePath = FileUtils::getInstance()->getWritablePath();
+            filePath.append("Save");
+            filePath.append(std::to_string(count));
+            filePath.append(".json");
+            isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
+            count += 1;
+        }
+    }
+    else
+    {
+        //filePath.append("\\");
+        filePath.append(openFileName);
     }
 
     log("JSON WriteMapJson : %s" , strJSON.c_str());
@@ -216,6 +227,28 @@ void DataIO::writeMapData(std::string pszFileName, const char* pData)
     fclose(fp);
 }
 
+std::list<std::string> DataIO::FileExist()
+{
+    std::list<std::string> fileNames;
+    std::string filePath = FileUtils::getInstance()->getWritablePath();
+    std::string fileName = "Save1.json";
+    filePath.append(fileName);
+    bool isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
+    int count = 1;
+    while(isFileCheck)
+    {
+        fileNames.push_back(fileName);
+        count += 1;
+        filePath = FileUtils::getInstance()->getWritablePath();
+        fileName = "Save";
+        fileName.append(std::to_string(count));
+        fileName.append(".json");
+        filePath.append(fileName);
+        isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
+    }
+    
+    return fileNames;
+}
 
 
 

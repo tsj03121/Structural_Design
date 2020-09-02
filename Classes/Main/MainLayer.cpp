@@ -33,7 +33,7 @@ bool MainLayer::init()
     
     Label* label = Label::createWithTTF("LobbyScene-MainLayer", "fonts/Marker Felt.ttf", 15);
     label->setPosition(Vec2(x/2, y/2));
-    addChild(label);
+    addChild(label, 0, "Label");
     
     MainLayerController* controller = new MainLayerController();
     addChild(controller, -1, "Controller");
