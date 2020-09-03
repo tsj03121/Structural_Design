@@ -61,8 +61,12 @@
 		FC4DD13B24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */; };
 		FC57D75724FF28070061FE4B /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75524FF28070061FE4B /* heart.png */; };
 		FC57D75824FF28070061FE4B /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75524FF28070061FE4B /* heart.png */; };
-		FC57D75A24FF820A0061FE4B /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75924FF820A0061FE4B /* boss.png */; };
-		FC57D75B24FF820A0061FE4B /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75924FF820A0061FE4B /* boss.png */; };
+		FC57D75A24FF820A0061FE4B /* spiderBoss.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75924FF820A0061FE4B /* spiderBoss.png */; };
+		FC57D75B24FF820A0061FE4B /* spiderBoss.png in Resources */ = {isa = PBXBuildFile; fileRef = FC57D75924FF820A0061FE4B /* spiderBoss.png */; };
+		FC57D76224FF8A950061FE4B /* SpiderBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */; };
+		FC57D76324FF8A950061FE4B /* SpiderBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */; };
+		FC727FC424FF8FAA00DFB192 /* Boss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC727FC324FF8FAA00DFB192 /* Boss.cpp */; };
+		FC727FC524FF8FAA00DFB192 /* Boss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC727FC324FF8FAA00DFB192 /* Boss.cpp */; };
 		FCAF0D7F24F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8024F7744900698B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D7E24F7744900698B22 /* TitleScene.cpp */; };
 		FCAF0D8724F7750D00698B22 /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF0D8624F7750D00698B22 /* TitleLayer.cpp */; };
@@ -121,6 +125,8 @@
 		FCF2882424FCDE850064F674 /* EditorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882224FCDE850064F674 /* EditorLayer.cpp */; };
 		FCF2882724FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
 		FCF2882824FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
+		FCF69569250074AA005EC38B /* BossCreateFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF69568250074AA005EC38B /* BossCreateFactory.cpp */; };
+		FCF6956A250074AA005EC38B /* BossCreateFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF69568250074AA005EC38B /* BossCreateFactory.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,7 +219,11 @@
 		FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMapLayerController.h; sourceTree = "<group>"; };
 		FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMapLayerController.cpp; sourceTree = "<group>"; };
 		FC57D75524FF28070061FE4B /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
-		FC57D75924FF820A0061FE4B /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
+		FC57D75924FF820A0061FE4B /* spiderBoss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spiderBoss.png; sourceTree = "<group>"; };
+		FC57D76024FF8A8C0061FE4B /* SpiderBoss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpiderBoss.h; sourceTree = "<group>"; };
+		FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpiderBoss.cpp; sourceTree = "<group>"; };
+		FC727FC224FF8F2B00DFB192 /* Boss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boss.h; sourceTree = "<group>"; };
+		FC727FC324FF8FAA00DFB192 /* Boss.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Boss.cpp; sourceTree = "<group>"; };
 		FCAF0D7C24F7743C00698B22 /* TitleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		FCAF0D7E24F7744900698B22 /* TitleScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		FCAF0D8524F7750500698B22 /* TitleLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleLayer.h; sourceTree = "<group>"; };
@@ -271,6 +281,9 @@
 		FCF2882224FCDE850064F674 /* EditorLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorLayer.cpp; sourceTree = "<group>"; };
 		FCF2882524FCDED00064F674 /* EditorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorController.h; sourceTree = "<group>"; };
 		FCF2882624FCDED70064F674 /* EditorController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorController.cpp; sourceTree = "<group>"; };
+		FCF695662500734E005EC38B /* BossFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BossFactory.h; sourceTree = "<group>"; };
+		FCF695672500740B005EC38B /* BossCreateFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BossCreateFactory.h; sourceTree = "<group>"; };
+		FCF69568250074AA005EC38B /* BossCreateFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BossCreateFactory.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,7 +419,7 @@
 				FCE594DE24F8AF9000A43F57 /* coin.png */,
 				FCBF350224FF23B5004ABFFE /* trap.png */,
 				FC57D75524FF28070061FE4B /* heart.png */,
-				FC57D75924FF820A0061FE4B /* boss.png */,
+				FC57D75924FF820A0061FE4B /* spiderBoss.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -415,6 +428,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FCF69564250072EF005EC38B /* Factory */,
+				FC57D75E24FF8A780061FE4B /* Boss */,
 				FCAF0DC924F7AD2800698B22 /* Title */,
 				FCAF0DCB24F7AD3C00698B22 /* Lobby */,
 				FCAF0DCC24F7AD4A00698B22 /* Main */,
@@ -447,6 +462,17 @@
 				503AE10417EB98FF00D1A890 /* Prefix.pch */,
 			);
 			name = mac;
+			sourceTree = "<group>";
+		};
+		FC57D75E24FF8A780061FE4B /* Boss */ = {
+			isa = PBXGroup;
+			children = (
+				FC57D76024FF8A8C0061FE4B /* SpiderBoss.h */,
+				FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */,
+				FC727FC224FF8F2B00DFB192 /* Boss.h */,
+				FC727FC324FF8FAA00DFB192 /* Boss.cpp */,
+			);
+			path = Boss;
 			sourceTree = "<group>";
 		};
 		FCAF0DC924F7AD2800698B22 /* Title */ = {
@@ -574,6 +600,16 @@
 			path = Editor;
 			sourceTree = "<group>";
 		};
+		FCF69564250072EF005EC38B /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FCF695662500734E005EC38B /* BossFactory.h */,
+				FCF695672500740B005EC38B /* BossCreateFactory.h */,
+				FCF69568250074AA005EC38B /* BossCreateFactory.cpp */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -685,7 +721,7 @@
 				FCF2880A24FC8B350064F674 /* json_internalarray.inl in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
-				FC57D75A24FF820A0061FE4B /* boss.png in Resources */,
+				FC57D75A24FF820A0061FE4B /* spiderBoss.png in Resources */,
 				FCE594DF24F8AF9000A43F57 /* coin.png in Resources */,
 				FCF2880E24FC8B350064F674 /* sconscript in Resources */,
 				FCF2881624FC8B350064F674 /* json_internalmap.inl in Resources */,
@@ -711,7 +747,7 @@
 				FCF2880B24FC8B350064F674 /* json_internalarray.inl in Resources */,
 				FCBF350524FF23B5004ABFFE /* trap.png in Resources */,
 				FCF2881724FC8B350064F674 /* json_internalmap.inl in Resources */,
-				FC57D75B24FF820A0061FE4B /* boss.png in Resources */,
+				FC57D75B24FF820A0061FE4B /* spiderBoss.png in Resources */,
 				FCE594DD24F8AA4200A43F57 /* red.png in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
@@ -734,6 +770,7 @@
 				FCAF0D9E24F789D100698B22 /* MainLayerController.cpp in Sources */,
 				FCAF0DA224F789E600698B22 /* MainLayer.cpp in Sources */,
 				FCAF0DBB24F79D5E00698B22 /* RewardLayer.cpp in Sources */,
+				FCF69569250074AA005EC38B /* BossCreateFactory.cpp in Sources */,
 				FCE594D924F88FC500A43F57 /* PlayerInfomation.cpp in Sources */,
 				1AF87B8B1F6F782A007BE51C /* RootViewController.mm in Sources */,
 				FCAF0DC324F79ECE00698B22 /* RewardLayerController.cpp in Sources */,
@@ -749,8 +786,10 @@
 				FCAF0D8B24F776FB00698B22 /* TitleLayerController.cpp in Sources */,
 				FCAF0DAB24F79B4200698B22 /* GameScene.cpp in Sources */,
 				FCAF0D7F24F7744900698B22 /* TitleScene.cpp in Sources */,
+				FC57D76224FF8A950061FE4B /* SpiderBoss.cpp in Sources */,
 				FCAF0D8724F7750D00698B22 /* TitleLayer.cpp in Sources */,
 				FC10E74124FDF7330061D903 /* LoadMapLayer.cpp in Sources */,
+				FC727FC424FF8FAA00DFB192 /* Boss.cpp in Sources */,
 				FCF2881224FC8B350064F674 /* json_writer.cpp in Sources */,
 				FCF2882324FCDE850064F674 /* EditorLayer.cpp in Sources */,
 				FCAF0D9A24F786F400698B22 /* LobbyLayerController.cpp in Sources */,
@@ -764,6 +803,7 @@
 				FCF2881324FC8B350064F674 /* json_writer.cpp in Sources */,
 				FCAF0D9F24F789D100698B22 /* MainLayerController.cpp in Sources */,
 				FCAF0DC424F79ECE00698B22 /* RewardLayerController.cpp in Sources */,
+				FCF6956A250074AA005EC38B /* BossCreateFactory.cpp in Sources */,
 				FCAF0D9B24F786F400698B22 /* LobbyLayerController.cpp in Sources */,
 				FCAF0DA324F789E600698B22 /* MainLayer.cpp in Sources */,
 				FCAF0DBC24F79D5E00698B22 /* RewardLayer.cpp in Sources */,
@@ -773,6 +813,7 @@
 				FCAF0DB424F79BFF00698B22 /* GameLayerController.cpp in Sources */,
 				FCAF0DC024F79E7000698B22 /* ResultLayerController.cpp in Sources */,
 				FCAF0D8824F7750D00698B22 /* TitleLayer.cpp in Sources */,
+				FC727FC524FF8FAA00DFB192 /* Boss.cpp in Sources */,
 				FCAF0DAC24F79B4200698B22 /* GameScene.cpp in Sources */,
 				FC2C614124F901D800A23D0B /* DataIO.cpp in Sources */,
 				FCF2882024FCDDDF0064F674 /* EditorScene.cpp in Sources */,
@@ -781,6 +822,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				FCAF0D9624F785F000698B22 /* LobbyLayer.cpp in Sources */,
 				FCAF0DB824F79D4D00698B22 /* ResultLayer.cpp in Sources */,
+				FC57D76324FF8A950061FE4B /* SpiderBoss.cpp in Sources */,
 				FCF2881124FC8B350064F674 /* json_reader.cpp in Sources */,
 				FCAF0D9124F781CD00698B22 /* LobbyScene.cpp in Sources */,
 				FCF2882424FCDE850064F674 /* EditorLayer.cpp in Sources */,

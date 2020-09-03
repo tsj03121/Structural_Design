@@ -1,0 +1,25 @@
+//
+//  BossFactory.h
+//  Structural_Design_Temp
+//
+//  Created by CD-parkdaedong on 2020/09/03.
+//
+
+#ifndef BossFactory_h
+#define BossFactory_h
+#include "Boss.h"
+
+enum BossType
+{
+    TypeSpiderBoss
+};
+
+class BossFactory
+{
+public:
+    virtual Boss* CreateBoss(BossType bossType){};
+//    virtual BossType getBossType(int num);
+};
+
+
+#endif /* BossFactory_h */

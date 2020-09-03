@@ -11,6 +11,7 @@
 #include "DataIO.h"
 #include "LoadMapLayer.h"
 #include "json.h"
+#include "SpiderBoss.h"
 
 USING_NS_CC;
 
@@ -42,6 +43,21 @@ void EditorController::TrapSelect(Ref *pSender)
 {
     mySelect_ = SelectSprite::Trap;
     pSprite_ = Sprite::create("trap.png");
+    pSprite_->retain();
+    MenuVisibility(false);
+}
+
+void EditorController::SpiderBossSelect(Ref *pSender, Layer* layer)
+{
+    mySelect_ = SelectSprite::Boss;
+    while(layer->getChildByName("Boss") != nullptr)
+    {
+        layer->removeChildByName("Boss");
+    }
+    pSprite_ = Sprite::create("spiderBoss.png");
+    pSprite_->setScale(4, 4);
+    SpiderBoss* bossInfo = new SpiderBoss();
+    pSprite_->addChild(bossInfo, -1, "BossInfo");
     pSprite_->retain();
     MenuVisibility(false);
 }
@@ -88,6 +104,10 @@ bool EditorController::onTouchBegan(Touch *touch, Event *event)
         else if(mySelect_ == SelectSprite::Trap)
         {
             layer->addChild(pSprite_, 1, "Trap");
+        }
+        else if(mySelect_ == SelectSprite::Boss)
+        {
+            layer->addChild(pSprite_, 1, "Boss");
         }
         
         pSprite_->setPosition(touchPoint.x, touchPoint.y);

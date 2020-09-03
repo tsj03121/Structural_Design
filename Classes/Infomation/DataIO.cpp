@@ -9,6 +9,8 @@
 #include "DataIO.h"
 #include "PlayerInfomation.h"
 #include "json.h"
+#include "SpiderBoss.h"
+#include "BossCreateFactory.h"
 
 USING_NS_CC;
 
@@ -129,8 +131,24 @@ void DataIO::readMapData(std::string pData, Layer* layer)
     }
     
     Sprite* player = Sprite::create("red.png", Rect(0, 0, spriteSize, spriteSize));
-    player->setPosition(root.get("PlayerX", "defaultvalue").asDouble(), root.get("PlayerY", "defaultvalue").asDouble());
+    double playerX = root.get("PlayerX", "defaultvalue").asDouble();
+    double playerY = root.get("PlayerY", "defaultvalue").asDouble();
+    player->setPosition(playerX, playerY);
     layer->addChild(player, 2, "Player");
+    
+    if(root.get("BossType", -1).asInt() != -1)
+    {
+        BossCreateFactory* bossFactory = new BossCreateFactory();
+        Boss* boss = bossFactory->CreateBoss((BossType) root.get("BossType", -1).asInt());
+        Sprite* bossSprite = Sprite::create(boss->getbossImgName());
+        bossSprite->addChild(boss, -1, "BossInfo");
+        bossSprite->setScale(4, 4);
+        
+        double bossX = root.get("BossX", "defaultvalue").asDouble();
+        double bossY = root.get("BossY", "defaultvalue").asDouble();
+        bossSprite->setPosition(bossX, bossY);
+        layer->addChild(bossSprite, 1, "Boss");
+    }
     
     const Json::Value coinArrayX = root["CoinX"];
     const Json::Value coinArrayY = root["CoinY"];
@@ -158,6 +176,15 @@ void DataIO::writeMapJSON(Layer* layer)
     Sprite* player = (Sprite*) layer->getChildByName("Player");
     root["PlayerX"] = player->getPosition().x;
     root["PlayerY"] = player->getPosition().y;
+    
+    Sprite* boss = (Sprite*) layer->getChildByName("Boss");
+    if(boss != nullptr)
+    {
+        Boss* bossinfo = (Boss*) boss->getChildByName("BossInfo");
+        root["BossType"] = bossinfo->getBossType();
+        root["BossX"] = boss->getPosition().x;
+        root["BossY"] = boss->getPosition().y;
+    }
     
     Json::Value coinX;
     Json::Value coinY;
@@ -205,7 +232,6 @@ void DataIO::writeMapJSON(Layer* layer)
     }
     else
     {
-        //filePath.append("\\");
         filePath.append(openFileName);
     }
 

@@ -12,6 +12,9 @@
 #include "LobbyScene.h"
 #include "PlayerInfomation.h"
 #include "DataIO.h"
+#include "SpiderBoss.h"
+#include "GameLayer.h"
+#include "Boss.h"
 
 USING_NS_CC;
 
@@ -42,55 +45,78 @@ void GameLayerController::MoveUP(cocos2d::Ref* pSender)
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
-    player->setPosition(player->getPosition().x, player->getPosition().y + moveSpeed_);
     
+    if(player->getPosition().y + moveSpeed_ > _director->getWinSize().height - (player->getContentSize().height * 0.1))
+        return;
+    
+    player->setPosition(player->getPosition().x, player->getPosition().y + moveSpeed_);
     CollisionChecks(layer, player);
 }
+
 void GameLayerController::MoveDOWN(cocos2d::Ref* pSender)
 {
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
-    player->setPosition(player->getPosition().x, (player->getPosition().y - moveSpeed_));
 
-    CollisionChecks(layer, player);
-}
-void GameLayerController::MoveLEFT(cocos2d::Ref* pSender)
-{
-    Scene* scene = _director->getRunningScene();
-    Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
-    Sprite* player = (Sprite*) layer->getChildByName("Player");
-    player->setPosition(player->getPosition().x - moveSpeed_, player->getPosition().y);
+    if(player->getPosition().y - moveSpeed_ < (player->getContentSize().height * 0.1))
+        return;
     
+    player->setPosition(player->getPosition().x, (player->getPosition().y - moveSpeed_));
     CollisionChecks(layer, player);
 }
+
 void GameLayerController::MoveRIGHT(cocos2d::Ref* pSender)
 {
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
-    player->setPosition(player->getPosition().x + moveSpeed_, player->getPosition().y);
+
+    if(player->getPosition().x + moveSpeed_ > _director->getWinSize().width - (player->getContentSize().width * 0.1))
+        return;
     
+    player->setPosition(player->getPosition().x + moveSpeed_, player->getPosition().y);
+    CollisionChecks(layer, player);
+}
+
+void GameLayerController::MoveLEFT(cocos2d::Ref* pSender)
+{
+    Scene* scene = _director->getRunningScene();
+    Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
+    Sprite* player = (Sprite*) layer->getChildByName("Player");
+    
+    if(player->getPosition().x - moveSpeed_ < (player->getContentSize().width * 0.1))
+        return;
+    
+    player->setPosition(player->getPosition().x - moveSpeed_, player->getPosition().y);
     CollisionChecks(layer, player);
 }
 
 void GameLayerController::CollisionChecks(Layer* layer, Sprite* player)
 {
-    CoinCheck(layer, player);
     TrapCheck(layer, player);
+    BossCheck(layer, player);
+    CoinCheck(layer, player);
 }
 
 void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
 {
     Sprite* coin = (Sprite*) layer->getChildByName("Coin");
+    Sprite* boss = (Sprite*) layer->getChildByName("Boss");
+    Boss* bossinfo;
+    
+    if(boss != nullptr)
+    {
+        bossinfo = (Boss*) boss->getChildByName("BossInfo");
+    }
     Vector<Node*> children = layer->getChildren();
     
-    if(coin == nullptr)
+    if(coin == nullptr && boss == nullptr)
     {
         NextMap(layer);
         return;
     }
-        
+    
     for(auto child : children)
     {
         if(child->getName() != "Coin")
@@ -102,18 +128,90 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
         if(playerBox.intersectsRect(coinBox))
         {
             layer->removeChild(child);
+            coin = (Sprite*) layer->getChildByName("Coin");
             PlayerInfo playerInfo = PlayerInfo::getInstance();
             PlayerInfoUpdate(playerInfo);
-            
-            Sprite* coin = (Sprite*) layer->getChildByName("Coin");
-            Sprite* boss = (Sprite*) layer->getChildByName("Boss");
-            if(coin != nullptr)
-                continue;
-            if(boss != nullptr)
-                continue;
-            
+            break;
+        }
+    }
+    
+    if(coin == nullptr && boss != nullptr)
+    {
+        int curHp = bossinfo->getHp();
+        bossinfo->setHp(--curHp);
+        log("boss HP : %d", curHp);
+        
+        if (curHp <= 0)
+        {
+            layer->removeChild(boss);
+            boss = nullptr;
+        }
+        if(boss != nullptr)
+        {
+            ((GameLayer*) layer)->CoinCreate();
+        }
+        else
+        {
             NextMap(layer);
             return;
+        }
+    }
+    
+}
+
+void GameLayerController::TrapCheck(Layer* layer, Sprite* player)
+{
+    Vector<Node*> children = layer->getChildren();
+    
+    for(auto child : children)
+    {
+        if(child->getName() != "Trap")
+            continue;
+        
+        Rect playerBox = player->getBoundingBox();
+        Rect trapBox = child->getBoundingBox();
+        
+        if(playerBox.intersectsRect(trapBox))
+        {
+            PlayerInfo playerInfo = PlayerInfo::getInstance();
+            playerInfo.pPlayerInfo_->playerHeart_ -= 1;
+            
+            layer->removeChildByName("Heart");
+            
+            if(playerInfo.pPlayerInfo_->playerHeart_ <= 0)
+            {
+                playerInfo.pPlayerInfo_->playMapCount_ = -1;
+                _director->popScene();
+            }
+        }
+    }
+}
+
+void GameLayerController::BossCheck(Layer* layer, Sprite* player)
+{
+    Sprite* boss = (Sprite*) layer->getChildByName("Boss");
+    Vector<Node*> children = layer->getChildren();
+    
+    for(auto child : children)
+    {
+        if(child->getName() != "Boss")
+            continue;
+        
+        Rect playerBox = player->getBoundingBox();
+        Rect bossBox = child->getBoundingBox();
+        
+        if(playerBox.intersectsRect(bossBox))
+        {
+            PlayerInfo playerInfo = PlayerInfo::getInstance();
+            playerInfo.pPlayerInfo_->playerHeart_ -= 1;
+            
+            layer->removeChildByName("Heart");
+            
+            if(playerInfo.pPlayerInfo_->playerHeart_ <= 0)
+            {
+                playerInfo.pPlayerInfo_->playMapCount_ = -1;
+                _director->popScene();
+            }
         }
     }
 }
@@ -170,35 +268,6 @@ void GameLayerController::NextMap(Layer* layer)
     
     playerInfo.pPlayerInfo_->playMapCount_ += 1;
     dataIO->readMapJSON(layer, fileName);
-}
-
-void GameLayerController::TrapCheck(Layer* layer, Sprite* player)
-{
-    Sprite* trap = (Sprite*) layer->getChildByName("Trap");
-    Vector<Node*> children = layer->getChildren();
-    
-    for(auto child : children)
-    {
-        if(child->getName() != "Trap")
-            continue;
-        
-        Rect playerBox = player->getBoundingBox();
-        Rect trapBox = child->getBoundingBox();
-        
-        if(playerBox.intersectsRect(trapBox))
-        {
-            PlayerInfo playerInfo = PlayerInfo::getInstance();
-            playerInfo.pPlayerInfo_->playerHeart_ -= 1;
-            
-            layer->removeChildByName("Heart");
-            
-            if(playerInfo.pPlayerInfo_->playerHeart_ <= 0)
-            {
-                playerInfo.pPlayerInfo_->playMapCount_ = -1;
-                _director->popScene();
-            }
-        }
-    }
 }
 
 void GameLayerController::PlayerInfoUpdate(PlayerInfo playerInfo)

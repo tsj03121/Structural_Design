@@ -12,7 +12,8 @@ enum SelectSprite
 {
     Player,
     Coin,
-    Trap
+    Trap,
+    Boss
 };
 
 class EditorController : public cocos2d::Node
@@ -25,14 +26,15 @@ public:
 
 public:
     void MenuVisibility(bool isVisible);
-    void PlayerSelect(cocos2d::Ref* pSender, cocos2d::Layer* layer);
-    void CoinSelect(cocos2d::Ref* pSender);
-    void TrapSelect(cocos2d::Ref* pSender);
-    void SaveEditor(cocos2d::Ref* pSender, cocos2d::Layer* layer);
+    
     void Goto_Lobby(cocos2d::Ref* pSender);
     void LoadMapList(cocos2d::Ref* pSender);
+    void CoinSelect(cocos2d::Ref* pSender);
+    void TrapSelect(cocos2d::Ref* pSender);
     
-    
+    void PlayerSelect(cocos2d::Ref* pSender, cocos2d::Layer* layer);
+    void SpiderBossSelect(cocos2d::Ref* pSender, cocos2d::Layer* layer);
+    void SaveEditor(cocos2d::Ref* pSender, cocos2d::Layer* layer);
 public:
     virtual bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 };

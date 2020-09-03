@@ -39,8 +39,9 @@ bool EditorLayer::init()
     MenuItemImage* menuItem2 = MenuItemImage::create("coin.png", "coin.png", CC_CALLBACK_1(EditorController::CoinSelect, pEditorController));
     menuItem2->setScale(0.03, 0.03);
     MenuItemImage* menuItem3 = MenuItemImage::create("trap.png", "trap.png", CC_CALLBACK_1(EditorController::TrapSelect, pEditorController));
+    MenuItemImage* menuItem4 = MenuItemImage::create("spiderBoss.png", "boss.png", CC_CALLBACK_1(EditorController::SpiderBossSelect, pEditorController, this));
     
-    Menu* menu = Menu::create(menuItem1, menuItem2, menuItem3, NULL);
+    Menu* menu = Menu::create(menuItem1, menuItem2, menuItem3, menuItem4, NULL);
     menu->setPosition(x * 0.5, y * 0.95);
     menu->alignItemsHorizontally();
     addChild(menu, 3, "Menu");
