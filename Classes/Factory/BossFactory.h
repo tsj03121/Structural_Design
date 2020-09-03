@@ -19,7 +19,6 @@ class BossFactory
 {
 public:
     virtual Boss* CreateBoss(BossType bossType){};
-//    virtual BossType getBossType(int num);
 };
 
 

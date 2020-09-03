@@ -16,7 +16,6 @@ USING_NS_CC;
 void TitleLayerController::Goto_LobbyScene(Ref* pSender)
 {
     DataIO* pDataIO = DataIO::getInstance();
-    //pDataIO->getData();
     pDataIO->readJSON();
 
     Scene* lobby = LobbyScene::createScene();

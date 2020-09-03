@@ -11,6 +11,11 @@
 class TitleLayer : public cocos2d::Layer
 {
 public:
+    float x_ = _director->getWinSize().width;
+    float y_ = _director->getWinSize().height;
+    int fontSize_ = 15;
+    
+public:
     static cocos2d::Layer* createLayer();
 
     virtual bool init();

@@ -35,8 +35,5 @@ bool TitleScene::init()
     Layer* layer = TitleLayer::createLayer();
     view->addChild(layer,1,"Layer");
     
-    Node* titleController = TitleLayerController::create();
-    layer->addChild(titleController, -1, "TitleLayerController");
-    
     return true;
 }

@@ -1,19 +1,18 @@
 //
-//  RewardLayer.h
-//  Structural_Design
+//  LoadMapLayer.h
+//  Structural_Design_Temp
 //
-//  Created by CD-parkdaedong on 2020/08/27.
+//  Created by CD-parkdaedong on 2020/09/01.
 //
 
-#ifndef RewardLayer_h
-#define RewardLayer_h
+#ifndef LoadMapLayer_h
+#define LoadMapLayer_h
 
-class RewardLayer : public cocos2d::Layer
+class LoadMapLayer : public cocos2d::Layer
 {
 public:
     float x_ = _director->getWinSize().width;
     float y_ = _director->getWinSize().height;
-    int fontSize_ = 15;
     
 public:
     static cocos2d::Layer* createLayer();
@@ -21,7 +20,7 @@ public:
     virtual bool init();
 
     // implement the "static create()" method manually
-    CREATE_FUNC(RewardLayer);
+    CREATE_FUNC(LoadMapLayer);
 };
 
-#endif /* RewardLayer_h */
+#endif /* LoadMapLayer_h */

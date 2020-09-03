@@ -22,11 +22,13 @@ void MainLayerController::Goto_GameScene(Ref* pSender)
     PlayerInfo playerInfo = PlayerInfo::getInstance();
     if(playerInfo.pPlayerInfo_->getTicket() > 0)
     {
-        playerInfo.pPlayerInfo_->setTicket(playerInfo.pPlayerInfo_->getTicket()-1);
+        playerInfo.pPlayerInfo_->setTicket(playerInfo.pPlayerInfo_->getTicket() - 1);
         Scene* game = GameScene::createScene();
         GameLayer* layer = (GameLayer*) game->getChildByName("View")->getChildByName("Layer");
+        
         layer->PlayerCreate();
         layer->CoinCreate();
+        
         _director->pushScene(game);
     }
 }
@@ -35,8 +37,9 @@ void MainLayerController::Change_LobbyLayer(Ref* pSender)
 {
     Scene* scene = _director->getRunningScene();
     Layer* view = (Layer*) scene->getChildByName("View");
-    view->removeAllChildren();
     Layer* layer = LobbyLayer::createLayer();
+    
+    view->removeAllChildren();
     view->addChild(layer,1,"Layer");
 }
 

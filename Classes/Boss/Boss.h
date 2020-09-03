@@ -25,7 +25,7 @@ public:
 public:
     inline int getHp() { return hp_; }
     inline int getBossType() { return bossType_; }
-    inline std::string getbossImgName() { return bossImgName_; }
+    inline std::string getBossImgName() { return bossImgName_; }
     inline cocos2d::Size getScaleSize() { return scaleSize_; }
     
 public:

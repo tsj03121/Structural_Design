@@ -15,7 +15,8 @@ void ResultLayerController::Change_RewardLayer(Ref* pSender)
 {
     Scene* scene = _director->getRunningScene();
     Layer* view = (Layer*) scene->getChildByName("View");
-    view->removeAllChildren();
     Layer* layer = RewardLayer::createLayer();
+    
+    view->removeAllChildren();
     view->addChild(layer,1,"Layer");
 }

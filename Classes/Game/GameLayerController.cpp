@@ -35,9 +35,10 @@ void GameLayerController::Change_ResultLayer(Ref* pSender)
     
     Scene* scene = _director->getRunningScene();
     Layer* view = (Layer*) scene->getChildByName("View");
-    view->removeAllChildren();
     Layer* layer = ResultLayer::createLayer();
-    view->addChild(layer,1,"Layer");
+    
+    view->removeAllChildren();
+    view->addChild(layer, 1, "Layer");
 }
 
 void GameLayerController::MoveUP(cocos2d::Ref* pSender)
@@ -45,10 +46,13 @@ void GameLayerController::MoveUP(cocos2d::Ref* pSender)
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
-    
-    if(player->getPosition().y + moveSpeed_ > _director->getWinSize().height - (player->getContentSize().height * 0.1))
-        return;
-    
+
+    if(player->getPosition().y + (player->getContentSize().height * 0.5) + moveSpeed_ > _director->getWinSize().height)
+    {
+        int posY = _director->getWinSize().height - (player->getContentSize().height * 0.5) - moveSpeed_;
+        player->setPositionY(posY);
+    }
+        
     player->setPosition(player->getPosition().x, player->getPosition().y + moveSpeed_);
     CollisionChecks(layer, player);
 }
@@ -59,8 +63,11 @@ void GameLayerController::MoveDOWN(cocos2d::Ref* pSender)
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
 
-    if(player->getPosition().y - moveSpeed_ < (player->getContentSize().height * 0.1))
-        return;
+    if(player->getPosition().y - (player->getContentSize().height * 0.5) - moveSpeed_ < 0)
+    {
+        int posY = (player->getContentSize().height * 0.5) + moveSpeed_;
+        player->setPositionY(posY);
+    }
     
     player->setPosition(player->getPosition().x, (player->getPosition().y - moveSpeed_));
     CollisionChecks(layer, player);
@@ -72,8 +79,11 @@ void GameLayerController::MoveRIGHT(cocos2d::Ref* pSender)
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
 
-    if(player->getPosition().x + moveSpeed_ > _director->getWinSize().width - (player->getContentSize().width * 0.1))
-        return;
+    if(player->getPosition().x + (player->getContentSize().width * 0.5) + moveSpeed_ > _director->getWinSize().width)
+    {
+        int posX = _director->getWinSize().width - (player->getContentSize().width * 0.5) - moveSpeed_;
+        player->setPositionX(posX);
+    }
     
     player->setPosition(player->getPosition().x + moveSpeed_, player->getPosition().y);
     CollisionChecks(layer, player);
@@ -85,8 +95,11 @@ void GameLayerController::MoveLEFT(cocos2d::Ref* pSender)
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
     
-    if(player->getPosition().x - moveSpeed_ < (player->getContentSize().width * 0.1))
-        return;
+    if(player->getPosition().x - (player->getContentSize().width * 0.5) - moveSpeed_ < 0)
+    {
+        int posX = (player->getContentSize().width * 0.5) + moveSpeed_;
+        player->setPositionX(posX);
+    }
     
     player->setPosition(player->getPosition().x - moveSpeed_, player->getPosition().y);
     CollisionChecks(layer, player);
@@ -103,13 +116,12 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
 {
     Sprite* coin = (Sprite*) layer->getChildByName("Coin");
     Sprite* boss = (Sprite*) layer->getChildByName("Boss");
-    Boss* bossinfo;
     
+    Boss* bossinfo;
     if(boss != nullptr)
     {
         bossinfo = (Boss*) boss->getChildByName("BossInfo");
     }
-    Vector<Node*> children = layer->getChildren();
     
     if(coin == nullptr && boss == nullptr)
     {
@@ -117,6 +129,7 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
         return;
     }
     
+    Vector<Node*> children = layer->getChildren();
     for(auto child : children)
     {
         if(child->getName() != "Coin")
@@ -129,9 +142,15 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
         {
             layer->removeChild(child);
             coin = (Sprite*) layer->getChildByName("Coin");
+            
             PlayerInfo playerInfo = PlayerInfo::getInstance();
             PlayerInfoUpdate(playerInfo);
-            break;
+            
+            if(coin == nullptr && boss == nullptr)
+            {
+                NextMap(layer);
+                return;
+            }
         }
     }
     
@@ -139,13 +158,13 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
     {
         int curHp = bossinfo->getHp();
         bossinfo->setHp(--curHp);
-        log("boss HP : %d", curHp);
-        
+
         if (curHp <= 0)
         {
             layer->removeChild(boss);
             boss = nullptr;
         }
+        
         if(boss != nullptr)
         {
             ((GameLayer*) layer)->CoinCreate();
@@ -156,13 +175,11 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
             return;
         }
     }
-    
 }
 
 void GameLayerController::TrapCheck(Layer* layer, Sprite* player)
 {
     Vector<Node*> children = layer->getChildren();
-    
     for(auto child : children)
     {
         if(child->getName() != "Trap")
@@ -174,13 +191,13 @@ void GameLayerController::TrapCheck(Layer* layer, Sprite* player)
         if(playerBox.intersectsRect(trapBox))
         {
             PlayerInfo playerInfo = PlayerInfo::getInstance();
-            playerInfo.pPlayerInfo_->playerHeart_ -= 1;
+            playerInfo.pPlayerInfo_->playerHp_ -= 1;
             
             layer->removeChildByName("Heart");
             
-            if(playerInfo.pPlayerInfo_->playerHeart_ <= 0)
+            if(playerInfo.pPlayerInfo_->playerHp_ <= 0)
             {
-                playerInfo.pPlayerInfo_->playMapCount_ = -1;
+                playerInfo.pPlayerInfo_->playMapNumber_ = -1;
                 _director->popScene();
             }
         }
@@ -203,13 +220,14 @@ void GameLayerController::BossCheck(Layer* layer, Sprite* player)
         if(playerBox.intersectsRect(bossBox))
         {
             PlayerInfo playerInfo = PlayerInfo::getInstance();
-            playerInfo.pPlayerInfo_->playerHeart_ -= 1;
+            playerInfo.pPlayerInfo_->playerHp_ -= 1;
             
             layer->removeChildByName("Heart");
             
-            if(playerInfo.pPlayerInfo_->playerHeart_ <= 0)
+            if(playerInfo.pPlayerInfo_->playerHp_ <= 0)
             {
-                playerInfo.pPlayerInfo_->playMapCount_ = -1;
+                playerInfo.pPlayerInfo_->playMapNumber_ = -1;
+                playerInfo.pPlayerInfo_->playerHp_ = 3;
                 _director->popScene();
             }
         }
@@ -222,8 +240,8 @@ void GameLayerController::NextMap(Layer* layer)
     DataIO* dataIO = DataIO::getInstance();
     
     std::string fileName = "";
-    fileName.append("Save");
-    fileName.append(std::to_string(playerInfo.pPlayerInfo_->playMapCount_ + 1));
+    fileName.append("Stage");
+    fileName.append(std::to_string(playerInfo.pPlayerInfo_->playMapNumber_ + 1));
     fileName.append(".json");
     
     std::string filePath = FileUtils::getInstance()->getWritablePath();
@@ -237,7 +255,7 @@ void GameLayerController::NextMap(Layer* layer)
         playerInfo.pPlayerInfo_->addTotalScore(nowScore);
         playerInfo.pPlayerInfo_->setHighScore(nowScore);
         playerInfo.pPlayerInfo_->setShortClearTime(playerInfo.pPlayerInfo_->clearTime_);
-        playerInfo.pPlayerInfo_->playMapCount_ = -1;
+        playerInfo.pPlayerInfo_->playMapNumber_ = -1;
         Change_ResultLayer(layer);
         return;
     }
@@ -258,7 +276,7 @@ void GameLayerController::NextMap(Layer* layer)
     float x = _director->getWinSize().width;
     float y = _director->getWinSize().height;
     
-    for(int heart_i = 0; heart_i < playerInfo.pPlayerInfo_->playerHeart_; ++heart_i)
+    for(int heart_i = 0; heart_i < playerInfo.pPlayerInfo_->playerHp_; ++heart_i)
     {
         Sprite* heartSprite = Sprite::create("heart.png");
         heartSprite->setScale(0.3, 0.3);
@@ -266,7 +284,7 @@ void GameLayerController::NextMap(Layer* layer)
         layer->addChild(heartSprite, 4, "Heart");
     }
     
-    playerInfo.pPlayerInfo_->playMapCount_ += 1;
+    playerInfo.pPlayerInfo_->playMapNumber_ += 1;
     dataIO->readMapJSON(layer, fileName);
 }
 

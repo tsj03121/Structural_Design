@@ -11,8 +11,8 @@
 class DataIO
 {
 public:
+    int spriteSize_ = 30;
     static DataIO* pDataIO;
-    //int dataCount = 5;
     std::string openFileName = "";
     
 public:
@@ -31,7 +31,7 @@ public:
     void writeMapJSON(cocos2d::Layer* layer);
     void writeMapData(std::string pszFileName, const char* pData);
     
-    std::list<std::string> FileExist();
+    std::list<std::string> getStageFiles();
 };
 
 #endif /* DataIO_h */

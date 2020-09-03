@@ -113,34 +113,33 @@ void DataIO::readMapJSON(Layer* layer, std::string fileName)
     
     unsigned long bufferSize = 0;
     unsigned char* json = FileUtils::sharedFileUtils()->getFileData(filePath.c_str(), "rb", (ssize_t *) &bufferSize);
-    std::string clearData((const char*)json, bufferSize);
-    
-    readMapData(clearData, layer);
+    std::string mapData((const char*)json, bufferSize);
+    readMapData(mapData, layer);
 }
 
-void DataIO::readMapData(std::string pData, Layer* layer)
+void DataIO::readMapData(std::string mapData, Layer* layer)
 {
-    int spriteSize = 30;
     Json::Value root;
     Json::Reader reader;
-    bool parsingSuccessful = reader.parse(pData, root);
+    bool parsingSuccessful = reader.parse(mapData, root);
     if (! parsingSuccessful)
     {
-        log("parser failed : \n %s", pData.c_str());
+        log("parser failed : \n %s", mapData.c_str());
         return ;
     }
     
-    Sprite* player = Sprite::create("red.png", Rect(0, 0, spriteSize, spriteSize));
+    Sprite* player = Sprite::create("red.png", Rect(0, 0, spriteSize_, spriteSize_));
     double playerX = root.get("PlayerX", "defaultvalue").asDouble();
     double playerY = root.get("PlayerY", "defaultvalue").asDouble();
     player->setPosition(playerX, playerY);
     layer->addChild(player, 2, "Player");
     
-    if(root.get("BossType", -1).asInt() != -1)
+    int bossType = root.get("BossType", -1).asInt();
+    if(bossType != -1)
     {
         BossCreateFactory* bossFactory = new BossCreateFactory();
-        Boss* boss = bossFactory->CreateBoss((BossType) root.get("BossType", -1).asInt());
-        Sprite* bossSprite = Sprite::create(boss->getbossImgName());
+        Boss* boss = bossFactory->CreateBoss((BossType) bossType);
+        Sprite* bossSprite = Sprite::create(boss->getBossImgName());
         bossSprite->addChild(boss, -1, "BossInfo");
         bossSprite->setScale(boss->getScaleSize().height, boss->getScaleSize().width);
         
@@ -205,17 +204,18 @@ void DataIO::writeMapJSON(Layer* layer)
             trapY.append(sprite->getPosition().y);
         }
     }
+    
     root["CoinX"] = coinX;
     root["CoinY"] = coinY;
     root["TrapX"] = trapX;
     root["TrapY"] = trapY;
     
     Json::StyledWriter writer;
-    std::string strJSON = writer.write(root);
+    std::string mapJSON = writer.write(root);
     std::string filePath = FileUtils::getInstance()->getWritablePath();
     if(openFileName == "")
     {
-        filePath.append("Save1.json");
+        filePath.append("Stage1.json");
         
         bool isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
         int count = 2;
@@ -223,7 +223,7 @@ void DataIO::writeMapJSON(Layer* layer)
         while(isFileCheck)
         {
             filePath = FileUtils::getInstance()->getWritablePath();
-            filePath.append("Save");
+            filePath.append("Stage");
             filePath.append(std::to_string(count));
             filePath.append(".json");
             isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
@@ -235,40 +235,41 @@ void DataIO::writeMapJSON(Layer* layer)
         filePath.append(openFileName);
     }
 
-    log("JSON WriteMapJson : %s" , strJSON.c_str());
-    writeMapData(filePath, strJSON.c_str());
+    log("JSON WriteMapJson : %s" , mapJSON.c_str());
+    writeMapData(filePath, mapJSON.c_str());
 }
 
-void DataIO::writeMapData(std::string pszFileName, const char* pData)
+void DataIO::writeMapData(std::string mapFilePath, const char* mapData)
 {
-    FILE *fp = fopen(pszFileName.c_str(), "wb");
+    FILE *fp = fopen(mapFilePath.c_str(), "wb");
     if (! fp)
     {
-        log("can not create file %s", pszFileName.c_str());
+        log("can not create file %s", mapFilePath.c_str());
         return;
     }
     else
     {
-        log("write file success: %s",pszFileName.c_str());
+        log("write file success: %s",mapFilePath.c_str());
     }
-    fputs(pData, fp); //pdata->fp에 복사
+    fputs(mapData, fp);
     fclose(fp);
 }
 
-std::list<std::string> DataIO::FileExist()
+std::list<std::string> DataIO::getStageFiles()
 {
     std::list<std::string> fileNames;
     std::string filePath = FileUtils::getInstance()->getWritablePath();
-    std::string fileName = "Save1.json";
+    std::string fileName = "Stage1.json";
     filePath.append(fileName);
     bool isFileCheck = FileUtils::getInstance()->isFileExist(filePath);
     int count = 1;
+    
     while(isFileCheck)
     {
         fileNames.push_back(fileName);
         count += 1;
         filePath = FileUtils::getInstance()->getWritablePath();
-        fileName = "Save";
+        fileName = "Stage";
         fileName.append(std::to_string(count));
         fileName.append(".json");
         filePath.append(fileName);

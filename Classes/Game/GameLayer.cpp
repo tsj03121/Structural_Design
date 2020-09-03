@@ -29,89 +29,89 @@ bool GameLayer::init()
         return false;
     }
 
-    Label* label = Label::createWithTTF("GameScene-GameLayer", "fonts/Marker Felt.ttf", 15);
-    if(label != nullptr)
-    {
-        label->setPosition(Vec2(x / 2,y / 2));
-        addChild(label);
-    }
-    
+    PlayerInfo playerInfo = PlayerInfo::getInstance();
     GameLayerController* controller = new GameLayerController();
     addChild(controller, -1, "Controller");
     
-    MenuItemImage* menuItemUP = MenuItemImage::create("CloseNormal.png","CloseSelected.png", controller, menu_selector(GameLayerController::MoveUP));
+    Label* label = Label::createWithTTF("GameScene-GameLayer", "fonts/Marker Felt.ttf", 15);
+    if(label != nullptr)
+    {
+        label->setPosition(Vec2(x_ * 0.5, y_ * 0.5));
+        addChild(label);
+    }
+    
+    MenuItemImage* menuItemUP = MenuItemImage::create("upArrow.png","upArrow.png", controller, menu_selector(GameLayerController::MoveUP));
     if(menuItemUP != nullptr)
     {
         menuItemUP->setPosition(0,20);
-        menuItemUP->setScale(2,2);
+        menuItemUP->setScale(1.5, 1.5);
     }
     
-    MenuItemImage* menuItemDOWN = MenuItemImage::create("CloseNormal.png","CloseSelected.png", controller, menu_selector(GameLayerController::MoveDOWN));
+    MenuItemImage* menuItemDOWN = MenuItemImage::create("downArrow.png","downArrow.png", controller, menu_selector(GameLayerController::MoveDOWN));
     if(menuItemDOWN != nullptr)
     {
         menuItemDOWN->setPosition(0,-20);
-        menuItemDOWN->setScale(2,2);
+        menuItemDOWN->setScale(1.5, 1.5);
     }
     
-    MenuItemImage* menuItemLEFT = MenuItemImage::create("CloseNormal.png","CloseSelected.png", controller, menu_selector(GameLayerController::MoveLEFT));
+    MenuItemImage* menuItemLEFT = MenuItemImage::create("leftArrow.png","leftArrow.png", controller, menu_selector(GameLayerController::MoveLEFT));
     if(menuItemLEFT != nullptr)
     {
         menuItemLEFT->setPosition(-20, 0);
-        menuItemLEFT->setScale(2,2);
+        menuItemLEFT->setScale(1.5, 1.5);
     }
     
-    MenuItemImage* menuItemRIGHT = MenuItemImage::create("CloseNormal.png","CloseSelected.png", controller, menu_selector(GameLayerController::MoveRIGHT));
+    MenuItemImage* menuItemRIGHT = MenuItemImage::create("rightArrow.png","rightArrow.png", controller, menu_selector(GameLayerController::MoveRIGHT));
     if(menuItemRIGHT != nullptr)
     {
         menuItemRIGHT->setPosition(20, 0);
-        menuItemRIGHT->setScale(2,2);
+        menuItemRIGHT->setScale(1.5, 1.5);
     }
     
     Menu* menu = Menu::create(menuItemUP, menuItemDOWN, menuItemLEFT, menuItemRIGHT, NULL);
     if(menu != nullptr)
     {
-        menu->setPosition(40 , y - 40);
-        addChild(menu, 2, "Menu");
+        menu->setPosition(40 , y_ - 40);
+        addChild(menu, 4, "Menu");
     }
     
-    PlayerInfo playerInfo = PlayerInfo::getInstance();
     playerInfo.pPlayerInfo_->clearTime_ = 0;
     Label* clearTimelabel = Label::createWithTTF("00 : 00 : 00", "fonts/Marker Felt.ttf", 15);
     if(clearTimelabel != nullptr)
     {
-        clearTimelabel->setPosition(x * 0.85, y * 0.85);
+        clearTimelabel->setPosition(x_ * 0.85, y_ * 0.85);
         addChild(clearTimelabel, 2, "ClearTimeLabel");
     }
     this->schedule(schedule_selector(GameLayerController::Timer), 1.0);
-    
-    playerInfo.pPlayerInfo_->playerHeart_ = 3;
-    for(int heart_i = 0; heart_i < playerInfo.pPlayerInfo_->playerHeart_; ++heart_i)
+
+    for(int heart_i = 0; heart_i < playerInfo.pPlayerInfo_->playerHp_; ++heart_i)
     {
         Sprite* heartSprite = Sprite::create("heart.png");
         heartSprite->setScale(0.3, 0.3);
-        heartSprite->setPosition(x * 0.9 + (heart_i * -25), y * 0.93);
+        heartSprite->setPosition(x_ * 0.9 + (heart_i * -25), y_ * 0.93);
         addChild(heartSprite, 4, "Heart");
     }
+    
     return true;
 }
 
 void GameLayer::PlayerCreate()
 {
-    Sprite* playerSprite = Sprite::create("red.png",Rect(0, 0, spriteSize, spriteSize));
+    Sprite* playerSprite = Sprite::create("red.png",Rect(0, 0, spriteSize_, spriteSize_));
     if(playerSprite != nullptr)
     {
-        playerSprite->setPosition(20,20);
-        addChild(playerSprite, 1, "Player");
+        playerSprite->setPosition(20, 20);
+        addChild(playerSprite, 2, "Player");
     }
 }
 
 void GameLayer::CoinCreate()
 {
-    int randCoinCount = RandomHelper::random_int(1, 8);
+    int randCoinCount = RandomHelper::random_int(1, maxRandCoinCount_);
     for(int i = 0; i < randCoinCount; ++i)
     {
-        int randX = RandomHelper::random_int(spriteSize, (int)x);
-        int randY = RandomHelper::random_int(spriteSize, (int)y);
+        int randX = RandomHelper::random_int(spriteSize_, (int)x_);
+        int randY = RandomHelper::random_int(spriteSize_, (int)y_);
         
         Sprite* coinSprite = Sprite::create("coin.png");
         if(coinSprite == nullptr)

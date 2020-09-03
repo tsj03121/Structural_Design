@@ -23,6 +23,7 @@ void LobbyLayerController::Change_MainLayer(Ref* pSender)
     Scene* scene = _director->getRunningScene();
     Layer* view = (Layer*) scene->getChildByName("View");
     view->removeAllChildren();
+    
     Layer* layer = MainLayer::createLayer();
     view->addChild(layer,1,"Layer");
 }

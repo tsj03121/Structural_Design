@@ -28,14 +28,3 @@ Boss* BossCreateFactory::CreateBoss(BossType bossType)
     }
     return boss;
 }
-
-//BossType BossCreateFactory::getBossType(int num)
-//{
-//    switch (num)
-//    {
-//        case 0:
-//        {
-//            return BossType::TypeSpiderBoss;
-//        }
-//    }
-//}

@@ -27,11 +27,8 @@ bool TitleLayer::init()
     {
         return false;
     }
-    float x = _director->getWinSize().width;
-    float y = _director->getWinSize().height;
-    
-    Label* label = Label::createWithTTF("TitleScene-TitleLayer", "fonts/Marker Felt.ttf", 15);
-    label->setPosition(x/2, y/2);
+    Label* label = Label::createWithTTF("TitleScene-TitleLayer", "fonts/Marker Felt.ttf", fontSize_);
+    label->setPosition(x_ * 0.5, y_ * 0.5);
     addChild(label);
     
     TitleLayerController* controller = new TitleLayerController();
@@ -41,10 +38,8 @@ bool TitleLayer::init()
     menuItem1->setScale(0.3, 0.3);
 
     Menu* menu = Menu::create(menuItem1, NULL);
-    menu->setPosition(Vec2(x/2, y/3));
+    menu->setPosition(Vec2(x_ * 0.5, y_ * 0.33));
     
     addChild(menu);
-    log("_director : x , y : %f, %f", x, y);
-    log("label : x , y : %f, %f", label->getPosition().x, label->getPosition().y);
     return true;
 }

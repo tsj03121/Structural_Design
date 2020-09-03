@@ -11,15 +11,15 @@
 class GameLayer : public cocos2d::Layer
 {
 public:
-    float x = _director->getWinSize().width;
-    float y = _director->getWinSize().height;
-    int spriteSize = 30;
+    float x_ = _director->getWinSize().width;
+    float y_ = _director->getWinSize().height;
+    int spriteSize_ = 30;
+    int maxRandCoinCount_ = 8;
+    
 public:
     static cocos2d::Layer* createLayer();
-
-    virtual bool init();    
-    // implement the "static create()" method manually
-    CREATE_FUNC(GameLayer);\
+    virtual bool init();
+    CREATE_FUNC(GameLayer);
     
 public:
     void PlayerCreate();

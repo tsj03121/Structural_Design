@@ -16,8 +16,6 @@
 
 USING_NS_CC;
 
-
-
 void EditorController::PlayerSelect(Ref *pSender, Layer* layer)
 {
     mySelect_ = SelectSprite::Player;
@@ -26,7 +24,7 @@ void EditorController::PlayerSelect(Ref *pSender, Layer* layer)
         layer->removeChildByName("Player");
     }
     
-    pSprite_ = Sprite::create("red.png", Rect(0, 0, spriteSize, spriteSize));
+    pSprite_ = Sprite::create("red.png", Rect(0, 0, spriteSize_, spriteSize_));
     pSprite_->retain();
     MenuVisibility(false);
 }
@@ -55,11 +53,14 @@ void EditorController::SpiderBossSelect(Ref *pSender, Layer* layer)
     {
         layer->removeChildByName("Boss");
     }
+    
     pSprite_ = Sprite::create("spiderBoss.png");
     pSprite_->setScale(4, 4);
+    pSprite_->retain();
+    
     SpiderBoss* bossInfo = new SpiderBoss();
     pSprite_->addChild(bossInfo, -1, "BossInfo");
-    pSprite_->retain();
+    
     MenuVisibility(false);
 }
 
@@ -72,9 +73,11 @@ void EditorController::SansBossSelect(Ref* pSender, Layer* layer)
     }
     pSprite_ = Sprite::create("sansBoss.png");
     pSprite_->setScale(0.5, 0.5);
+    pSprite_->retain();
+    
     SansBoss* bossInfo = new SansBoss();
     pSprite_->addChild(bossInfo, -1, "BossInfo");
-    pSprite_->retain();
+    
     MenuVisibility(false);
 }
 

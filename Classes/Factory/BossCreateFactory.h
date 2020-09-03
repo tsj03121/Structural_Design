@@ -15,7 +15,6 @@ class BossCreateFactory : public BossFactory
     
 public:
     virtual Boss* CreateBoss(BossType bossType) override;
-//    virtual BossType getBossType(int num) override;
 };
 
 

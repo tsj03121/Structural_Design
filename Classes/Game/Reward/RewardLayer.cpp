@@ -26,36 +26,35 @@ bool RewardLayer::init()
     {
         return false;
     }
-    
-    float x = _director->getWinSize().width;
-    float y = _director->getWinSize().height;
-    
-    Label* label = Label::createWithTTF("GameScene-RewardLayer", "fonts/Marker Felt.ttf", 15);
-    label->setPosition(Vec2(x / 2, y / 2));
+
+    Label* label = Label::createWithTTF("GameScene-RewardLayer", "fonts/Marker Felt.ttf", fontSize_);
+    label->setPosition(x_ * 0.5, y_ * 0.5);
     addChild(label);
     
     RewardLayerController* controller = new RewardLayerController();
     addChild(controller, -1, "Controller");
     
-    MenuItemImage* menuItem1 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",this,menu_selector(RewardLayerController::Backto_LobbyScene));
-    menuItem1->setScale(3, 3);
+    MenuItemFont* menuItem1 = MenuItemFont::create("눌러서 로비로 넘어가세요!", this, menu_selector(RewardLayerController::Backto_LobbyScene));
+    menuItem1->setScale(0.3, 0.3);
+    
     Menu* menu = Menu::create(menuItem1, NULL);
     menu->alignItemsHorizontally();
-    menu->setPosition(Vec2(x/2,y/3));
+    menu->setPosition(x_ * 0.5, y_ * 0.33);
     addChild(menu);
     
     PlayerInfo player = PlayerInfo::getInstance();
     
     std::string scoreText = "Money : ";
     scoreText.append(std::to_string(player.pPlayerInfo_->getMoney()));
-    Label* scoreTextLabel = Label::createWithTTF(scoreText, "fonts/Marker Felt.ttf", 15);
-    scoreTextLabel->setPosition(x * 0.20, y * 0.75);
+    Label* scoreTextLabel = Label::createWithTTF(scoreText, "fonts/Marker Felt.ttf", fontSize_);
+    scoreTextLabel->setPosition(x_ * 0.20, y_ * 0.75);
     addChild(scoreTextLabel);
     
     std::string ticketText = std::to_string(player.pPlayerInfo_->getTicket());
-    ticketText.append(" / 5");
-    Label* ticketTextLabel = Label::createWithTTF(ticketText, "fonts/Marker Felt.ttf", 15);
-    ticketTextLabel->setPosition(x * 0.75, y * 0.75);
+    ticketText.append(" / ");
+    ticketText.append(std::to_string(player.pPlayerInfo_->maxTicket_));
+    Label* ticketTextLabel = Label::createWithTTF(ticketText, "fonts/Marker Felt.ttf", fontSize_);
+    ticketTextLabel->setPosition(x_ * 0.75, y_ * 0.75);
     addChild(ticketTextLabel);
     
     return true;

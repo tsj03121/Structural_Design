@@ -55,6 +55,14 @@
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 		FC10E74124FDF7330061D903 /* LoadMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */; };
 		FC10E74224FDF7330061D903 /* LoadMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */; };
+		FC1AE6A12500D4BE0071F284 /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE69C2500D4BE0071F284 /* leftArrow.png */; };
+		FC1AE6A22500D4BE0071F284 /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE69C2500D4BE0071F284 /* leftArrow.png */; };
+		FC1AE6A32500D4BE0071F284 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE69E2500D4BE0071F284 /* upArrow.png */; };
+		FC1AE6A42500D4BE0071F284 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE69E2500D4BE0071F284 /* upArrow.png */; };
+		FC1AE6A52500D4BE0071F284 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE69F2500D4BE0071F284 /* downArrow.png */; };
+		FC1AE6A62500D4BE0071F284 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE69F2500D4BE0071F284 /* downArrow.png */; };
+		FC1AE6A72500D4BE0071F284 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE6A02500D4BE0071F284 /* rightArrow.png */; };
+		FC1AE6A82500D4BE0071F284 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE6A02500D4BE0071F284 /* rightArrow.png */; };
 		FC2C614024F901D800A23D0B /* DataIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC2C613F24F901D800A23D0B /* DataIO.cpp */; };
 		FC2C614124F901D800A23D0B /* DataIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC2C613F24F901D800A23D0B /* DataIO.cpp */; };
 		FC4DD13A24FDF9BB0001FAEF /* LoadMapLayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */; };
@@ -218,6 +226,10 @@
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		FC10E73F24FDF7270061D903 /* LoadMapLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMapLayer.h; sourceTree = "<group>"; };
 		FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMapLayer.cpp; sourceTree = "<group>"; };
+		FC1AE69C2500D4BE0071F284 /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrow.png; sourceTree = "<group>"; };
+		FC1AE69E2500D4BE0071F284 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
+		FC1AE69F2500D4BE0071F284 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
+		FC1AE6A02500D4BE0071F284 /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrow.png; sourceTree = "<group>"; };
 		FC2C613D24F901CE00A23D0B /* DataIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataIO.h; sourceTree = "<group>"; };
 		FC2C613F24F901D800A23D0B /* DataIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataIO.cpp; sourceTree = "<group>"; };
 		FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMapLayerController.h; sourceTree = "<group>"; };
@@ -422,6 +434,10 @@
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
+				FC1AE69F2500D4BE0071F284 /* downArrow.png */,
+				FC1AE69C2500D4BE0071F284 /* leftArrow.png */,
+				FC1AE6A02500D4BE0071F284 /* rightArrow.png */,
+				FC1AE69E2500D4BE0071F284 /* upArrow.png */,
 				FCE594DB24F8AA4200A43F57 /* red.png */,
 				FCE594DE24F8AF9000A43F57 /* coin.png */,
 				FCBF350224FF23B5004ABFFE /* trap.png */,
@@ -437,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF69564250072EF005EC38B /* Factory */,
+				FCF4B4C02500CA9A00B03A75 /* LoadMap */,
 				FC57D75E24FF8A780061FE4B /* Boss */,
 				FCAF0DC924F7AD2800698B22 /* Title */,
 				FCAF0DCB24F7AD3C00698B22 /* Lobby */,
@@ -475,10 +492,10 @@
 		FC57D75E24FF8A780061FE4B /* Boss */ = {
 			isa = PBXGroup;
 			children = (
-				FC57D76024FF8A8C0061FE4B /* SpiderBoss.h */,
-				FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */,
 				FC727FC224FF8F2B00DFB192 /* Boss.h */,
 				FC727FC324FF8FAA00DFB192 /* Boss.cpp */,
+				FC57D76024FF8A8C0061FE4B /* SpiderBoss.h */,
+				FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */,
 				FCF4B4B9250093B600B03A75 /* SansBoss.h */,
 				FCF4B4BA250093C800B03A75 /* SansBoss.cpp */,
 			);
@@ -518,10 +535,6 @@
 				FCAF0DA024F789DD00698B22 /* MainLayer.h */,
 				FCAF0D9D24F789D100698B22 /* MainLayerController.cpp */,
 				FCAF0D9C24F789B100698B22 /* MainLayerController.h */,
-				FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */,
-				FC10E73F24FDF7270061D903 /* LoadMapLayer.h */,
-				FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */,
-				FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -608,6 +621,17 @@
 				FCF2882624FCDED70064F674 /* EditorController.cpp */,
 			);
 			path = Editor;
+			sourceTree = "<group>";
+		};
+		FCF4B4C02500CA9A00B03A75 /* LoadMap */ = {
+			isa = PBXGroup;
+			children = (
+				FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */,
+				FC10E73F24FDF7270061D903 /* LoadMapLayer.h */,
+				FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */,
+				FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */,
+			);
+			path = LoadMap;
 			sourceTree = "<group>";
 		};
 		FCF69564250072EF005EC38B /* Factory */ = {
@@ -728,8 +752,12 @@
 				1A88B2641FC3D9C9005C14AE /* Images.xcassets in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				FCE594DC24F8AA4200A43F57 /* red.png in Resources */,
+				FC1AE6A32500D4BE0071F284 /* upArrow.png in Resources */,
 				FCF2880A24FC8B350064F674 /* json_internalarray.inl in Resources */,
+				FC1AE6A72500D4BE0071F284 /* rightArrow.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				FC1AE6A52500D4BE0071F284 /* downArrow.png in Resources */,
+				FC1AE6A12500D4BE0071F284 /* leftArrow.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				FC57D75A24FF820A0061FE4B /* spiderBoss.png in Resources */,
 				FCE594DF24F8AF9000A43F57 /* coin.png in Resources */,
@@ -749,20 +777,24 @@
 			files = (
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				FC1AE6A82500D4BE0071F284 /* rightArrow.png in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				FC57D75824FF28070061FE4B /* heart.png in Resources */,
 				FCF2880F24FC8B350064F674 /* sconscript in Resources */,
 				FCE594E024F8AF9000A43F57 /* coin.png in Resources */,
+				FC1AE6A62500D4BE0071F284 /* downArrow.png in Resources */,
 				FCF2881524FC8B350064F674 /* json_valueiterator.inl in Resources */,
 				FCF2880B24FC8B350064F674 /* json_internalarray.inl in Resources */,
 				FCBF350524FF23B5004ABFFE /* trap.png in Resources */,
+				FC1AE6A42500D4BE0071F284 /* upArrow.png in Resources */,
 				FCF2881724FC8B350064F674 /* json_internalmap.inl in Resources */,
 				FCF4B4B82500937B00B03A75 /* sansBoss.png in Resources */,
 				FC57D75B24FF820A0061FE4B /* spiderBoss.png in Resources */,
 				FCE594DD24F8AA4200A43F57 /* red.png in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
+				FC1AE6A22500D4BE0071F284 /* leftArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

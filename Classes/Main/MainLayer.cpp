@@ -27,12 +27,9 @@ bool MainLayer::init()
     {
         return false;
     }
-    
-    float x = _director->getWinSize().width;
-    float y = _director->getWinSize().height;
-    
-    Label* label = Label::createWithTTF("LobbyScene-MainLayer", "fonts/Marker Felt.ttf", 15);
-    label->setPosition(Vec2(x/2, y/2));
+
+    Label* label = Label::createWithTTF("LobbyScene-MainLayer", "fonts/Marker Felt.ttf", fontSize_);
+    label->setPosition(x_ * 0.5, y_ * 0.5);
     addChild(label, 0, "Label");
     
     MainLayerController* controller = new MainLayerController();
@@ -52,9 +49,8 @@ bool MainLayer::init()
     
     Menu* menu = Menu::create(menuItem1, menuItem2, menuItem3, menuItem4, NULL);
     menu->alignItemsVertically();
-    menu->setPosition(Vec2(x * 0.9, y * 0.2));
+    menu->setPosition(Vec2(x_ * 0.9, y_ * 0.2));
     
-    addChild(menu);
-    
+    addChild(menu);    
     return true;
 }

@@ -11,12 +11,13 @@
 class PlayerInfo
 {
 public:
-    int playerHeart_ = 3;
+    int playerHp_ = 3;
     int clearTime_ = 0;
     int shortClearTime_ = NULL;
     int coinScore_ = 10;
     int coinMoney_ = 100;
-    int playMapCount_ = -1;
+    int playMapNumber_ = -1;
+    int maxTicket_ = 5;
     
 private:
     unsigned int highScore_ = 0;
@@ -24,7 +25,7 @@ private:
     unsigned int nowScore_ = 0;
     unsigned int money_ = 0;
     unsigned int ticket_ = 5;
-
+    
 public:
     static PlayerInfo* pPlayerInfo_;
 

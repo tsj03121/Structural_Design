@@ -26,25 +26,24 @@ bool EditorLayer::init()
     {
         return false;
     }
-    
-    float x = _director->getWinSize().width;
-    float y = _director->getWinSize().height;
-    int spriteSize = 30;
-    
+
     EditorController* pEditorController = new EditorController();
     addChild(pEditorController, -1, "Controller");
     
     MenuItemImage* menuItem1 = MenuItemImage::create("red.png", "red.png", CC_CALLBACK_1(EditorController::PlayerSelect, pEditorController, this));
     menuItem1->setScale(0.3, 0.3);
+    
     MenuItemImage* menuItem2 = MenuItemImage::create("coin.png", "coin.png", CC_CALLBACK_1(EditorController::CoinSelect, pEditorController));
     menuItem2->setScale(0.03, 0.03);
+    
     MenuItemImage* menuItem3 = MenuItemImage::create("trap.png", "trap.png", CC_CALLBACK_1(EditorController::TrapSelect, pEditorController));
-    MenuItemImage* menuItem4 = MenuItemImage::create("spiderBoss.png", "boss.png", CC_CALLBACK_1(EditorController::SpiderBossSelect, pEditorController, this));
-    MenuItemImage* menuItem5 = MenuItemImage::create("sansBoss.png", "boss.png", CC_CALLBACK_1(EditorController::SansBossSelect, pEditorController, this));
+    MenuItemImage* menuItem4 = MenuItemImage::create("spiderBoss.png", "spiderBoss.png", CC_CALLBACK_1(EditorController::SpiderBossSelect, pEditorController, this));
+    
+    MenuItemImage* menuItem5 = MenuItemImage::create("sansBoss.png", "sansBoss.png", CC_CALLBACK_1(EditorController::SansBossSelect, pEditorController, this));
     menuItem5->setScale(0.05, 0.05);
     
     Menu* menu = Menu::create(menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, NULL);
-    menu->setPosition(x * 0.5, y * 0.95);
+    menu->setPosition(x_ * 0.5, y_ * 0.95);
     menu->alignItemsHorizontally();
     addChild(menu, 3, "Menu");
     
@@ -56,7 +55,7 @@ bool EditorLayer::init()
     menuItemFont3->setScale(0.3, 0.3);
     
     Menu* menu2 = Menu::create(menuItemFont1, menuItemFont2, menuItemFont3, NULL);
-    menu2->setPosition(x * 0.85, y * 0.1);
+    menu2->setPosition(x_ * 0.85, y_ * 0.1);
     menu2->alignItemsHorizontally();
     addChild(menu2, 3, "Menu2");
     
