@@ -34,7 +34,10 @@ public:
     
     void PlayerSelect(cocos2d::Ref* pSender, cocos2d::Layer* layer);
     void SpiderBossSelect(cocos2d::Ref* pSender, cocos2d::Layer* layer);
+    void SansBossSelect(cocos2d::Ref* pSender, cocos2d::Layer* layer);
     void SaveEditor(cocos2d::Ref* pSender, cocos2d::Layer* layer);
+    
+    
 public:
     virtual bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 };

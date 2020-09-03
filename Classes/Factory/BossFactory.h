@@ -11,7 +11,8 @@
 
 enum BossType
 {
-    TypeSpiderBoss
+    TypeSpiderBoss,
+    TypeSansBoss
 };
 
 class BossFactory

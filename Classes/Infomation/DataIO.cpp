@@ -142,7 +142,7 @@ void DataIO::readMapData(std::string pData, Layer* layer)
         Boss* boss = bossFactory->CreateBoss((BossType) root.get("BossType", -1).asInt());
         Sprite* bossSprite = Sprite::create(boss->getbossImgName());
         bossSprite->addChild(boss, -1, "BossInfo");
-        bossSprite->setScale(4, 4);
+        bossSprite->setScale(boss->getScaleSize().height, boss->getScaleSize().width);
         
         double bossX = root.get("BossX", "defaultvalue").asDouble();
         double bossY = root.get("BossY", "defaultvalue").asDouble();

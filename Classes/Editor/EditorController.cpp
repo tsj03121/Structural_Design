@@ -12,6 +12,7 @@
 #include "LoadMapLayer.h"
 #include "json.h"
 #include "SpiderBoss.h"
+#include "SansBoss.h"
 
 USING_NS_CC;
 
@@ -57,6 +58,21 @@ void EditorController::SpiderBossSelect(Ref *pSender, Layer* layer)
     pSprite_ = Sprite::create("spiderBoss.png");
     pSprite_->setScale(4, 4);
     SpiderBoss* bossInfo = new SpiderBoss();
+    pSprite_->addChild(bossInfo, -1, "BossInfo");
+    pSprite_->retain();
+    MenuVisibility(false);
+}
+
+void EditorController::SansBossSelect(Ref* pSender, Layer* layer)
+{
+    mySelect_ = SelectSprite::Boss;
+    while(layer->getChildByName("Boss") != nullptr)
+    {
+        layer->removeChildByName("Boss");
+    }
+    pSprite_ = Sprite::create("sansBoss.png");
+    pSprite_->setScale(0.5, 0.5);
+    SansBoss* bossInfo = new SansBoss();
     pSprite_->addChild(bossInfo, -1, "BossInfo");
     pSprite_->retain();
     MenuVisibility(false);

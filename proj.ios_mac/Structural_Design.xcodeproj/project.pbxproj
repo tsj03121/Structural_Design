@@ -125,6 +125,10 @@
 		FCF2882424FCDE850064F674 /* EditorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882224FCDE850064F674 /* EditorLayer.cpp */; };
 		FCF2882724FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
 		FCF2882824FCDED70064F674 /* EditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF2882624FCDED70064F674 /* EditorController.cpp */; };
+		FCF4B4B72500937B00B03A75 /* sansBoss.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF4B4B52500937B00B03A75 /* sansBoss.png */; };
+		FCF4B4B82500937B00B03A75 /* sansBoss.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF4B4B52500937B00B03A75 /* sansBoss.png */; };
+		FCF4B4BB250093C800B03A75 /* SansBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF4B4BA250093C800B03A75 /* SansBoss.cpp */; };
+		FCF4B4BC250093C800B03A75 /* SansBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF4B4BA250093C800B03A75 /* SansBoss.cpp */; };
 		FCF69569250074AA005EC38B /* BossCreateFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF69568250074AA005EC38B /* BossCreateFactory.cpp */; };
 		FCF6956A250074AA005EC38B /* BossCreateFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF69568250074AA005EC38B /* BossCreateFactory.cpp */; };
 /* End PBXBuildFile section */
@@ -281,6 +285,9 @@
 		FCF2882224FCDE850064F674 /* EditorLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorLayer.cpp; sourceTree = "<group>"; };
 		FCF2882524FCDED00064F674 /* EditorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorController.h; sourceTree = "<group>"; };
 		FCF2882624FCDED70064F674 /* EditorController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditorController.cpp; sourceTree = "<group>"; };
+		FCF4B4B52500937B00B03A75 /* sansBoss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sansBoss.png; sourceTree = "<group>"; };
+		FCF4B4B9250093B600B03A75 /* SansBoss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SansBoss.h; sourceTree = "<group>"; };
+		FCF4B4BA250093C800B03A75 /* SansBoss.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SansBoss.cpp; sourceTree = "<group>"; };
 		FCF695662500734E005EC38B /* BossFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BossFactory.h; sourceTree = "<group>"; };
 		FCF695672500740B005EC38B /* BossCreateFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BossCreateFactory.h; sourceTree = "<group>"; };
 		FCF69568250074AA005EC38B /* BossCreateFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BossCreateFactory.cpp; sourceTree = "<group>"; };
@@ -420,6 +427,7 @@
 				FCBF350224FF23B5004ABFFE /* trap.png */,
 				FC57D75524FF28070061FE4B /* heart.png */,
 				FC57D75924FF820A0061FE4B /* spiderBoss.png */,
+				FCF4B4B52500937B00B03A75 /* sansBoss.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -471,6 +479,8 @@
 				FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */,
 				FC727FC224FF8F2B00DFB192 /* Boss.h */,
 				FC727FC324FF8FAA00DFB192 /* Boss.cpp */,
+				FCF4B4B9250093B600B03A75 /* SansBoss.h */,
+				FCF4B4BA250093C800B03A75 /* SansBoss.cpp */,
 			);
 			path = Boss;
 			sourceTree = "<group>";
@@ -729,6 +739,7 @@
 				1AF87B891F6F781D007BE51C /* LaunchScreenBackground.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				1AF87B881F6F781D007BE51C /* LaunchScreen.storyboard in Resources */,
+				FCF4B4B72500937B00B03A75 /* sansBoss.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +758,7 @@
 				FCF2880B24FC8B350064F674 /* json_internalarray.inl in Resources */,
 				FCBF350524FF23B5004ABFFE /* trap.png in Resources */,
 				FCF2881724FC8B350064F674 /* json_internalmap.inl in Resources */,
+				FCF4B4B82500937B00B03A75 /* sansBoss.png in Resources */,
 				FC57D75B24FF820A0061FE4B /* spiderBoss.png in Resources */,
 				FCE594DD24F8AA4200A43F57 /* red.png in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
@@ -780,6 +792,7 @@
 				FC2C614024F901D800A23D0B /* DataIO.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FCF2882724FCDED70064F674 /* EditorController.cpp in Sources */,
+				FCF4B4BB250093C800B03A75 /* SansBoss.cpp in Sources */,
 				FCAF0D9524F785F000698B22 /* LobbyLayer.cpp in Sources */,
 				FCAF0DB324F79BFF00698B22 /* GameLayerController.cpp in Sources */,
 				1AF87B8A1F6F7822007BE51C /* main.m in Sources */,
@@ -802,6 +815,7 @@
 			files = (
 				FCF2881324FC8B350064F674 /* json_writer.cpp in Sources */,
 				FCAF0D9F24F789D100698B22 /* MainLayerController.cpp in Sources */,
+				FCF4B4BC250093C800B03A75 /* SansBoss.cpp in Sources */,
 				FCAF0DC424F79ECE00698B22 /* RewardLayerController.cpp in Sources */,
 				FCF6956A250074AA005EC38B /* BossCreateFactory.cpp in Sources */,
 				FCAF0D9B24F786F400698B22 /* LobbyLayerController.cpp in Sources */,
