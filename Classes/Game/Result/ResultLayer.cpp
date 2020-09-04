@@ -41,21 +41,21 @@ bool ResultLayer::init()
     menu->setPosition(x_ * 0.5, y_ * 0.33);
     addChild(menu);
     
-    PlayerInfo player = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     
     std::string scoreText = "Score : ";
-    scoreText.append(std::to_string(player.pPlayerInfo_->getNowScore()));
+    scoreText.append(std::to_string(playerInfo->getNowScore()));
     Label* scoreTextLabel = Label::createWithTTF(scoreText, "fonts/Marker Felt.ttf", 15);
     scoreTextLabel->setPosition(x_ * 0.20, y_ * 0.75);
     addChild(scoreTextLabel);
 
     std::string highScoreText = "HighScore : ";
-    highScoreText.append(std::to_string(player.pPlayerInfo_->getHighScore()));
+    highScoreText.append(std::to_string(playerInfo->getHighScore()));
     Label* highScoreTextLabel = Label::createWithTTF(highScoreText, "fonts/Marker Felt.ttf", 15);
     highScoreTextLabel->setPosition(x_ * 0.20, y_ * 0.60);
     addChild(highScoreTextLabel);
     
-    player.pPlayerInfo_->setNowScore(0);
+    playerInfo->setNowScore(0);
     
     return true;
 }

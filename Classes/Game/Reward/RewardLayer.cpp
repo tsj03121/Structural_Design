@@ -42,17 +42,17 @@ bool RewardLayer::init()
     menu->setPosition(x_ * 0.5, y_ * 0.33);
     addChild(menu);
     
-    PlayerInfo player = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     
     std::string scoreText = "Money : ";
-    scoreText.append(std::to_string(player.pPlayerInfo_->getMoney()));
+    scoreText.append(std::to_string(playerInfo->getNowMoney()));
     Label* scoreTextLabel = Label::createWithTTF(scoreText, "fonts/Marker Felt.ttf", fontSize_);
     scoreTextLabel->setPosition(x_ * 0.20, y_ * 0.75);
     addChild(scoreTextLabel);
     
-    std::string ticketText = std::to_string(player.pPlayerInfo_->getTicket());
+    std::string ticketText = std::to_string(playerInfo->getTicket());
     ticketText.append(" / ");
-    ticketText.append(std::to_string(player.pPlayerInfo_->maxTicket_));
+    ticketText.append(std::to_string(playerInfo->maxTicket_));
     Label* ticketTextLabel = Label::createWithTTF(ticketText, "fonts/Marker Felt.ttf", fontSize_);
     ticketTextLabel->setPosition(x_ * 0.75, y_ * 0.75);
     addChild(ticketTextLabel);

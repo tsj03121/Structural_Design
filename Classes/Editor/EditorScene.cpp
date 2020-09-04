@@ -26,7 +26,7 @@ bool EditorScene::init()
     {
         return false;
     }
-
+    
     Layer* view = Layer::create();
     addChild(view, 1, "View");
     

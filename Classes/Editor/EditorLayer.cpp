@@ -26,7 +26,8 @@ bool EditorLayer::init()
     {
         return false;
     }
-
+    this->setName("EditorLayer");
+    
     EditorController* pEditorController = new EditorController();
     addChild(pEditorController, -1, "Controller");
     

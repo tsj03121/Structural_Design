@@ -15,7 +15,7 @@ USING_NS_CC;
 
 void LoadMapLayerController::Select_Map(Ref* pSender)
 {
-    PlayerInfo playerInfo = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     DataIO* dataIO = DataIO::getInstance();
     
     MenuItem* menuItem = (MenuItemFont*) pSender;
@@ -23,7 +23,7 @@ void LoadMapLayerController::Select_Map(Ref* pSender)
 
     if(_director->getRunningScene()->getName() == "Lobby")
     {
-        if(playerInfo.pPlayerInfo_->getTicket() <= 0)
+        if(playerInfo->getTicket() <= 0)
             return;
         
         Scene* scene = GameScene::createScene();
@@ -32,7 +32,7 @@ void LoadMapLayerController::Select_Map(Ref* pSender)
         bool isPlayMapCheck = false;
         int count = 1;
         
-        playerInfo.pPlayerInfo_->setTicket(playerInfo.pPlayerInfo_->getTicket() - 1);
+        playerInfo->setTicket(playerInfo->getTicket() - 1);
         dataIO->readMapJSON(layer, fileName);
         
         while(!isPlayMapCheck)
@@ -40,7 +40,7 @@ void LoadMapLayerController::Select_Map(Ref* pSender)
             if(fileName == nextFileName)
             {
                 isPlayMapCheck = true;
-                playerInfo.pPlayerInfo_->playMapNumber_ = count;
+                playerInfo->playMapNumber_ = count;
             }
             
             count += 1;

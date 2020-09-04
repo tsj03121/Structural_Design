@@ -53,6 +53,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
+		FC047AEB2500D7BD00A9AAED /* fireAttack.png in Resources */ = {isa = PBXBuildFile; fileRef = FC047AE92500D7BD00A9AAED /* fireAttack.png */; };
+		FC047AEC2500D7BD00A9AAED /* fireAttack.png in Resources */ = {isa = PBXBuildFile; fileRef = FC047AE92500D7BD00A9AAED /* fireAttack.png */; };
 		FC10E74124FDF7330061D903 /* LoadMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */; };
 		FC10E74224FDF7330061D903 /* LoadMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */; };
 		FC1AE6A12500D4BE0071F284 /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1AE69C2500D4BE0071F284 /* leftArrow.png */; };
@@ -224,6 +226,7 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		FC047AE92500D7BD00A9AAED /* fireAttack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fireAttack.png; sourceTree = "<group>"; };
 		FC10E73F24FDF7270061D903 /* LoadMapLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMapLayer.h; sourceTree = "<group>"; };
 		FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMapLayer.cpp; sourceTree = "<group>"; };
 		FC1AE69C2500D4BE0071F284 /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrow.png; sourceTree = "<group>"; };
@@ -434,6 +437,7 @@
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
+				FC047AE92500D7BD00A9AAED /* fireAttack.png */,
 				FC1AE69F2500D4BE0071F284 /* downArrow.png */,
 				FC1AE69C2500D4BE0071F284 /* leftArrow.png */,
 				FC1AE6A02500D4BE0071F284 /* rightArrow.png */,
@@ -766,6 +770,7 @@
 				FCBF350424FF23B5004ABFFE /* trap.png in Resources */,
 				1AF87B891F6F781D007BE51C /* LaunchScreenBackground.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
+				FC047AEB2500D7BD00A9AAED /* fireAttack.png in Resources */,
 				1AF87B881F6F781D007BE51C /* LaunchScreen.storyboard in Resources */,
 				FCF4B4B72500937B00B03A75 /* sansBoss.png in Resources */,
 			);
@@ -781,6 +786,7 @@
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				FC57D75824FF28070061FE4B /* heart.png in Resources */,
+				FC047AEC2500D7BD00A9AAED /* fireAttack.png in Resources */,
 				FCF2880F24FC8B350064F674 /* sconscript in Resources */,
 				FCE594E024F8AF9000A43F57 /* coin.png in Resources */,
 				FC1AE6A62500D4BE0071F284 /* downArrow.png in Resources */,

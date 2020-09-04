@@ -29,7 +29,7 @@ bool GameLayer::init()
         return false;
     }
 
-    PlayerInfo playerInfo = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     GameLayerController* controller = new GameLayerController();
     addChild(controller, -1, "Controller");
     
@@ -75,7 +75,7 @@ bool GameLayer::init()
         addChild(menu, 4, "Menu");
     }
     
-    playerInfo.pPlayerInfo_->clearTime_ = 0;
+    playerInfo->clearTime_ = 0;
     Label* clearTimelabel = Label::createWithTTF("00 : 00 : 00", "fonts/Marker Felt.ttf", 15);
     if(clearTimelabel != nullptr)
     {
@@ -84,12 +84,14 @@ bool GameLayer::init()
     }
     this->schedule(schedule_selector(GameLayerController::Timer), 1.0);
 
-    for(int heart_i = 0; heart_i < playerInfo.pPlayerInfo_->playerHp_; ++heart_i)
+    int hp = playerInfo->getPlayerHp();
+    int maxHp = playerInfo->maxHp_;
+    for(int heart_i = hp; heart_i > 0; --heart_i)
     {
         Sprite* heartSprite = Sprite::create("heart.png");
         heartSprite->setScale(0.3, 0.3);
-        heartSprite->setPosition(x_ * 0.9 + (heart_i * -25), y_ * 0.93);
-        addChild(heartSprite, 4, "Heart");
+        heartSprite->setPosition(x_ * 0.9 + ((maxHp - heart_i) * -25), y_ * 0.93);
+        addChild(heartSprite, 4, "Hp");
     }
     
     return true;

@@ -19,10 +19,10 @@ USING_NS_CC;
 
 void MainLayerController::Goto_GameScene(Ref* pSender)
 {
-    PlayerInfo playerInfo = PlayerInfo::getInstance();
-    if(playerInfo.pPlayerInfo_->getTicket() > 0)
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
+    if(playerInfo->getTicket() > 0)
     {
-        playerInfo.pPlayerInfo_->setTicket(playerInfo.pPlayerInfo_->getTicket() - 1);
+        playerInfo->setTicket(playerInfo->getTicket() - 1);
         Scene* game = GameScene::createScene();
         GameLayer* layer = (GameLayer*) game->getChildByName("View")->getChildByName("Layer");
         

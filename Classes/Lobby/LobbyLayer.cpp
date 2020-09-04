@@ -51,34 +51,34 @@ bool LobbyLayer::init()
     menu2->setPosition(x_ * 0.9, y_ * 0.75);
     addChild(menu2, 2);
     
-    PlayerInfo player = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     
     std::string scoreText = "TotalScore : ";
-    scoreText.append(std::to_string(player.pPlayerInfo_->getTotalScore()));
+    scoreText.append(std::to_string(playerInfo->getTotalScore()));
     Label* scoreTextLabel = Label::createWithTTF(scoreText, "fonts/Marker Felt.ttf", fontSize_);
     scoreTextLabel->setPosition(x_ * 0.20, y_ * 0.75);
     addChild(scoreTextLabel, 2);
     
     std::string highScoreText = "HighScore : ";
-    highScoreText.append(std::to_string(player.pPlayerInfo_->getHighScore()));
+    highScoreText.append(std::to_string(playerInfo->getHighScore()));
     Label* highScoreTextLabel = Label::createWithTTF(highScoreText, "fonts/Marker Felt.ttf", fontSize_);
     highScoreTextLabel->setPosition(x_ * 0.20, y_ * 0.60);
     addChild(highScoreTextLabel, 2);
     
     std::string moneyText = "Money : ";
-    moneyText.append(std::to_string(player.pPlayerInfo_->getMoney()));
+    moneyText.append(std::to_string(playerInfo->getTotalMoney()));
     Label* moneyTextLabel = Label::createWithTTF(moneyText, "fonts/Marker Felt.ttf", fontSize_);
     moneyTextLabel->setPosition(x_ * 0.20, y_ * 0.45);
     addChild(moneyTextLabel, 2);
 
-    std::string ticketText = std::to_string(player.pPlayerInfo_->getTicket());
+    std::string ticketText = std::to_string(playerInfo->getTicket());
     ticketText.append(" / ");
-    ticketText.append(std::to_string(player.pPlayerInfo_->maxTicket_));
+    ticketText.append(std::to_string(playerInfo->maxTicket_));
     Label* ticketTextLabel = Label::createWithTTF(ticketText, "fonts/Marker Felt.ttf", fontSize_);
     ticketTextLabel->setPosition(x_ * 0.75, y_ * 0.75);
     addChild(ticketTextLabel, 2, "TicKet");
     
-    std::string clearTimeText = player.pPlayerInfo_->TimerPrint(player.pPlayerInfo_->shortClearTime_);
+    std::string clearTimeText = playerInfo->TimerPrint(playerInfo->shortClearTime_);
     Label* clearTextLabel = Label::createWithTTF(clearTimeText, "fonts/Marker Felt.ttf", fontSize_);
     clearTextLabel->setPosition(x_ * 0.75, y_ * 0.60);
     addChild(clearTextLabel, 2);

@@ -10,13 +10,13 @@
 
 PlayerInfo* PlayerInfo::pPlayerInfo_ = nullptr;
 
-PlayerInfo& PlayerInfo::getInstance()
+PlayerInfo* PlayerInfo::getInstance()
 {
     if(pPlayerInfo_ == nullptr)
     {
         pPlayerInfo_ = new PlayerInfo();
     }
-    return *pPlayerInfo_;
+    return pPlayerInfo_;
 }
 
 void PlayerInfo::setHighScore(int num)
@@ -39,6 +39,18 @@ void PlayerInfo::setShortClearTime(int t)
     {
         shortClearTime_ = t;
     }
+}
+
+void PlayerInfo::PlayGameUpdate(int coinScore, int coinMoney)
+{
+    pPlayerInfo_->addNowScore(coinScore);
+    pPlayerInfo_->addNowMoney(coinMoney);
+}
+
+void PlayerInfo::TotalUpdate()
+{
+    pPlayerInfo_->addTotalMoney(pPlayerInfo_->getNowMoney());
+    pPlayerInfo_->addTotalScore(pPlayerInfo_->getNowScore());
 }
 
 std::string PlayerInfo::TimerPrint(int t)

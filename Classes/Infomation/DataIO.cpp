@@ -58,24 +58,24 @@ void DataIO::readUserData(std::string pData)
     int money = root.get("Money", "defaultvalue").asInt();
     int ticket = root.get("Ticket", "defaultvalue").asInt();
     
-    PlayerInfo pPlayerInfo = PlayerInfo::getInstance();
-    pPlayerInfo.pPlayerInfo_->setHighScore(highScore);
-    pPlayerInfo.pPlayerInfo_->addTotalScore(score);
-    pPlayerInfo.pPlayerInfo_->setShortClearTime(time);
-    pPlayerInfo.pPlayerInfo_->addMoney(money);
-    pPlayerInfo.pPlayerInfo_->setTicket(ticket);
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
+    playerInfo->setHighScore(highScore);
+    playerInfo->addTotalScore(score);
+    playerInfo->setShortClearTime(time);
+    playerInfo->addTotalMoney(money);
+    playerInfo->setTicket(ticket);
 }
 
 void DataIO::writeJSON()
 {
-    PlayerInfo pPlayerInfo = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
 
     Json::Value root;
-    root["HighScore"] = pPlayerInfo.pPlayerInfo_->getHighScore();
-    root["Score"] = pPlayerInfo.pPlayerInfo_->getTotalScore();
-    root["Time"] = pPlayerInfo.pPlayerInfo_->shortClearTime_;
-    root["Money"] = pPlayerInfo.pPlayerInfo_->getMoney();
-    root["Ticket"] = pPlayerInfo.pPlayerInfo_->getTicket();
+    root["HighScore"] = playerInfo->getHighScore();
+    root["Score"] = playerInfo->getTotalScore();
+    root["Time"] = playerInfo->shortClearTime_;
+    root["Money"] = playerInfo->getTotalMoney();
+    root["Ticket"] = playerInfo->getTicket();
 
     Json::StyledWriter writer;
     std::string strJSON = writer.write(root);

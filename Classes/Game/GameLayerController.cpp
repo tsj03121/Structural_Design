@@ -21,21 +21,28 @@ USING_NS_CC;
 
 void GameLayerController::Change_ResultLayer(Ref* pSender)
 {
-    PlayerInfo pPlayerInfo = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
+    playerInfo->TotalUpdate();
+    int nowScore = playerInfo->getNowScore();
+    playerInfo->setHighScore(nowScore);
+    playerInfo->setShortClearTime(playerInfo->clearTime_);
+    playerInfo->playMapNumber_ = -1;
+    
     DataIO* pDataIO = DataIO::getInstance();
     
     int data[5];
-    data[0] = pPlayerInfo.pPlayerInfo_->getHighScore();
-    data[1] = pPlayerInfo.pPlayerInfo_->getTotalScore();
-    data[2] = pPlayerInfo.pPlayerInfo_->shortClearTime_;
-    data[3] = pPlayerInfo.pPlayerInfo_->getMoney();
-    data[4] = pPlayerInfo.pPlayerInfo_->getTicket();
+    data[0] = playerInfo->getHighScore();
+    data[1] = playerInfo->getTotalScore();
+    data[2] = playerInfo->shortClearTime_;
+    data[3] = playerInfo->getTotalMoney();
+    data[4] = playerInfo->getTicket();
     
     pDataIO->writeJSON();
     
     Scene* scene = _director->getRunningScene();
     Layer* view = (Layer*) scene->getChildByName("View");
     Layer* layer = ResultLayer::createLayer();
+    playerInfo->setNowScore(0);
     
     view->removeAllChildren();
     view->addChild(layer, 1, "Layer");
@@ -143,8 +150,10 @@ void GameLayerController::CoinCheck(Layer* layer, Sprite* player)
             layer->removeChild(child);
             coin = (Sprite*) layer->getChildByName("Coin");
             
-            PlayerInfo playerInfo = PlayerInfo::getInstance();
-            PlayerInfoUpdate(playerInfo);
+            PlayerInfo* playerInfo = PlayerInfo::getInstance();
+            int coinScore = playerInfo->coinScore_;
+            int coinMoney = playerInfo->coinMoney_;
+            playerInfo->PlayGameUpdate(coinScore, coinMoney);
             
             if(coin == nullptr && boss == nullptr)
             {
@@ -190,14 +199,15 @@ void GameLayerController::TrapCheck(Layer* layer, Sprite* player)
         
         if(playerBox.intersectsRect(trapBox))
         {
-            PlayerInfo playerInfo = PlayerInfo::getInstance();
-            playerInfo.pPlayerInfo_->playerHp_ -= 1;
+            PlayerInfo* playerInfo = PlayerInfo::getInstance();
+            int hp = playerInfo->getPlayerHp();
+            hp -= 1;
+            playerInfo->setPlayerHp(hp);
+            layer->removeChildByName("Hp");
             
-            layer->removeChildByName("Heart");
-            
-            if(playerInfo.pPlayerInfo_->playerHp_ <= 0)
+            if(hp <= 0)
             {
-                playerInfo.pPlayerInfo_->playMapNumber_ = -1;
+                playerInfo->playMapNumber_ = -1;
                 _director->popScene();
             }
         }
@@ -219,15 +229,17 @@ void GameLayerController::BossCheck(Layer* layer, Sprite* player)
         
         if(playerBox.intersectsRect(bossBox))
         {
-            PlayerInfo playerInfo = PlayerInfo::getInstance();
-            playerInfo.pPlayerInfo_->playerHp_ -= 1;
+            PlayerInfo* playerInfo = PlayerInfo::getInstance();
+            int hp = playerInfo->getPlayerHp();
+            hp -= 1;
+            playerInfo->setPlayerHp(hp);
             
-            layer->removeChildByName("Heart");
+            layer->removeChildByName("Hp");
             
-            if(playerInfo.pPlayerInfo_->playerHp_ <= 0)
+            if(hp <= 0)
             {
-                playerInfo.pPlayerInfo_->playMapNumber_ = -1;
-                playerInfo.pPlayerInfo_->playerHp_ = 3;
+                playerInfo->playMapNumber_ = -1;
+                playerInfo->setPlayerHp(3);
                 _director->popScene();
             }
         }
@@ -236,12 +248,12 @@ void GameLayerController::BossCheck(Layer* layer, Sprite* player)
 
 void GameLayerController::NextMap(Layer* layer)
 {
-    PlayerInfo playerInfo = PlayerInfo::getInstance();
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     DataIO* dataIO = DataIO::getInstance();
     
     std::string fileName = "";
     fileName.append("Stage");
-    fileName.append(std::to_string(playerInfo.pPlayerInfo_->playMapNumber_ + 1));
+    fileName.append(std::to_string(playerInfo->playMapNumber_ + 1));
     fileName.append(".json");
     
     std::string filePath = FileUtils::getInstance()->getWritablePath();
@@ -251,11 +263,6 @@ void GameLayerController::NextMap(Layer* layer)
 
     if(!isFileCheck)
     {
-        int nowScore = playerInfo.pPlayerInfo_->getNowScore();
-        playerInfo.pPlayerInfo_->addTotalScore(nowScore);
-        playerInfo.pPlayerInfo_->setHighScore(nowScore);
-        playerInfo.pPlayerInfo_->setShortClearTime(playerInfo.pPlayerInfo_->clearTime_);
-        playerInfo.pPlayerInfo_->playMapNumber_ = -1;
         Change_ResultLayer(layer);
         return;
     }
@@ -276,33 +283,29 @@ void GameLayerController::NextMap(Layer* layer)
     float x = _director->getWinSize().width;
     float y = _director->getWinSize().height;
     
-    for(int heart_i = 0; heart_i < playerInfo.pPlayerInfo_->playerHp_; ++heart_i)
+    int hp = playerInfo->getPlayerHp();
+    int maxHp = playerInfo->maxHp_;
+    for(int heart_i = hp; heart_i > 0; --heart_i)
     {
         Sprite* heartSprite = Sprite::create("heart.png");
         heartSprite->setScale(0.3, 0.3);
-        heartSprite->setPosition(x * 0.9 + (heart_i * -25), y * 0.93);
-        layer->addChild(heartSprite, 4, "Heart");
+        heartSprite->setPosition(x * 0.9 + ((maxHp - heart_i) * -25), y * 0.93);
+        layer->addChild(heartSprite, 4, "Hp");
     }
     
-    playerInfo.pPlayerInfo_->playMapNumber_ += 1;
+    playerInfo->playMapNumber_ += 1;
     dataIO->readMapJSON(layer, fileName);
-}
-
-void GameLayerController::PlayerInfoUpdate(PlayerInfo playerInfo)
-{
-    playerInfo.pPlayerInfo_->addNowScore(playerInfo.pPlayerInfo_->coinScore_);
-    playerInfo.pPlayerInfo_->addMoney(playerInfo.pPlayerInfo_->coinMoney_);
 }
 
 void GameLayerController::Timer(float dt)
 {
-    PlayerInfo playerInfo = PlayerInfo::getInstance();
-    playerInfo.pPlayerInfo_->clearTime_ += 1;
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
+    playerInfo->clearTime_ += 1;
     
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Label* clearTimeLabel = (Label*) layer->getChildByName("ClearTimeLabel");
-    clearTimeLabel->setString(playerInfo.pPlayerInfo_->TimerPrint(playerInfo.pPlayerInfo_->clearTime_));
+    clearTimeLabel->setString(playerInfo->TimerPrint(playerInfo->clearTime_));
 }
 
 

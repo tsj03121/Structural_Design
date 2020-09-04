@@ -21,4 +21,11 @@ void SpiderBoss::bossInit()
     setBossType(0);
     setScaleSize(Size(4, 4));
     setbossImgName("spiderBoss.png");
+
+    Scene* scene = (Scene*) _director->getRunningScene();
+    if(scene->getName() != "Editor")
+    {
+        schedule(schedule_selector(SpiderBoss::BossAttack), 0.1);
+    }
+    
 }

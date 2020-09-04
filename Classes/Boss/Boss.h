@@ -9,7 +9,7 @@
 #define Boss_h
 
 class Boss : public cocos2d::Node
-{
+{   
 private:
     int hp_;
     int bossType_;
@@ -29,6 +29,7 @@ public:
     inline cocos2d::Size getScaleSize() { return scaleSize_; }
     
 public:
+    void BossAttack(float dt);
     virtual void bossInit(){};
 };
 

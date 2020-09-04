@@ -25,8 +25,7 @@ public:
     void CoinCheck(cocos2d::Layer* gameLayer, cocos2d::Sprite* coinSprite);
     void TrapCheck(cocos2d::Layer* gameLayer, cocos2d::Sprite* coinSprite);
     void BossCheck(cocos2d::Layer* gameLayer, cocos2d::Sprite* coinSprite);
-    void PlayerInfoUpdate(PlayerInfo playerInfo);
-    
+
     std::string TimerPrint(int t);
 };
 #endif /* GameLayerController_h */
