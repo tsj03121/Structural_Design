@@ -23,7 +23,7 @@ void Boss::BossAttack(float dt)
     {
         float fireAttackDir = bossSprite->getPositionX() - playerSprite->getPositionX();
         fireAttackSprite = Sprite::create("fireAttack.png");
-        fireAttackSprite->setPositionY(bossSprite->getPositionY() + bossSprite->getContentSize().height * 0.5);
+        fireAttackSprite->setPositionY(bossSprite->getPositionY());
         fireAttackSprite->setScale(1, 1);
         
         if(fireAttackDir >= 0)

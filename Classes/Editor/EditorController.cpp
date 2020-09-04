@@ -24,7 +24,7 @@ void EditorController::PlayerSelect(Ref *pSender, Layer* layer)
         layer->removeChildByName("Player");
     }
     
-    pSprite_ = Sprite::create("red.png", Rect(0, 0, spriteSize_, spriteSize_));
+    pSprite_ = Sprite::create("player.png", Rect(0, 0, spriteSize_, spriteSize_));
     pSprite_->retain();
     MenuVisibility(false);
 }

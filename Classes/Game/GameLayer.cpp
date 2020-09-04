@@ -99,7 +99,7 @@ bool GameLayer::init()
 
 void GameLayer::PlayerCreate()
 {
-    Sprite* playerSprite = Sprite::create("red.png",Rect(0, 0, spriteSize_, spriteSize_));
+    Sprite* playerSprite = Sprite::create("player.png",Rect(0, 0, spriteSize_, spriteSize_));
     if(playerSprite != nullptr)
     {
         playerSprite->setPosition(20, 20);

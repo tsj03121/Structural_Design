@@ -21,4 +21,10 @@ void SansBoss::bossInit()
     setBossType(1);
     setScaleSize(Size(0.5, 0.5));
     setbossImgName("sansBoss.png");
+    
+    Scene* scene = (Scene*) _director->getRunningScene();
+    if(scene->getName() != "Editor")
+    {
+        schedule(schedule_selector(SansBoss::BossAttack), 0.1);
+    }
 }

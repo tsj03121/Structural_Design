@@ -128,7 +128,7 @@ void DataIO::readMapData(std::string mapData, Layer* layer)
         return ;
     }
     
-    Sprite* player = Sprite::create("red.png", Rect(0, 0, spriteSize_, spriteSize_));
+    Sprite* player = Sprite::create("player.png", Rect(0, 0, spriteSize_, spriteSize_));
     double playerX = root.get("PlayerX", "defaultvalue").asDouble();
     double playerY = root.get("PlayerY", "defaultvalue").asDouble();
     player->setPosition(playerX, playerY);

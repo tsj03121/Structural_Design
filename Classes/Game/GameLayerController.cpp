@@ -29,14 +29,6 @@ void GameLayerController::Change_ResultLayer(Ref* pSender)
     playerInfo->playMapNumber_ = -1;
     
     DataIO* pDataIO = DataIO::getInstance();
-    
-    int data[5];
-    data[0] = playerInfo->getHighScore();
-    data[1] = playerInfo->getTotalScore();
-    data[2] = playerInfo->shortClearTime_;
-    data[3] = playerInfo->getTotalMoney();
-    data[4] = playerInfo->getTicket();
-    
     pDataIO->writeJSON();
     
     Scene* scene = _director->getRunningScene();
@@ -85,7 +77,8 @@ void GameLayerController::MoveRIGHT(cocos2d::Ref* pSender)
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
-
+    player->setRotation(180);
+    player->setFlippedY(true);
     if(player->getPosition().x + (player->getContentSize().width * 0.5) + moveSpeed_ > _director->getWinSize().width)
     {
         int posX = _director->getWinSize().width - (player->getContentSize().width * 0.5) - moveSpeed_;
@@ -101,7 +94,8 @@ void GameLayerController::MoveLEFT(cocos2d::Ref* pSender)
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
     Sprite* player = (Sprite*) layer->getChildByName("Player");
-    
+    player->setRotation(0);
+    player->setFlippedY(false);
     if(player->getPosition().x - (player->getContentSize().width * 0.5) - moveSpeed_ < 0)
     {
         int posX = (player->getContentSize().width * 0.5) + moveSpeed_;

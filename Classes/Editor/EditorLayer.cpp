@@ -31,8 +31,8 @@ bool EditorLayer::init()
     EditorController* pEditorController = new EditorController();
     addChild(pEditorController, -1, "Controller");
     
-    MenuItemImage* menuItem1 = MenuItemImage::create("red.png", "red.png", CC_CALLBACK_1(EditorController::PlayerSelect, pEditorController, this));
-    menuItem1->setScale(0.3, 0.3);
+    MenuItemImage* menuItem1 = MenuItemImage::create("player.png", "player.png", CC_CALLBACK_1(EditorController::PlayerSelect, pEditorController, this));
+    menuItem1->setScale(0.7, 0.7);
     
     MenuItemImage* menuItem2 = MenuItemImage::create("coin.png", "coin.png", CC_CALLBACK_1(EditorController::CoinSelect, pEditorController));
     menuItem2->setScale(0.03, 0.03);
