@@ -10,6 +10,7 @@
 #include "DataIO.h"
 #include "LoadMapLayerController.h"
 #include <cocos-ext.h>
+#include "BasicDefine.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -28,9 +29,6 @@ bool LoadMapLayer::init()
     {
         return false;
     }
-
-    LoadMapLayerController* controller = new LoadMapLayerController();
-    addChild(controller, -1, "Controller");
     
     Scene* scene = _director->getRunningScene();
     Layer* layer = (Layer*) scene->getChildByName("View")->getChildByName("Layer");
@@ -47,6 +45,15 @@ bool LoadMapLayer::init()
     }
     layer->addChild(this, 4, "LoadLayer");
     
+    ScrollViewCreate();
+    return true;                       
+}
+
+void LoadMapLayer::ScrollViewCreate()
+{
+    LoadMapLayerController* controller = new LoadMapLayerController();
+    addChild(controller, -1, "Controller");
+    
     Vector<MenuItem*> menuItems;
     DataIO* dataIO = DataIO::getInstance();
     std::list<std::string> fileNames = dataIO->getStageFiles();
@@ -59,7 +66,7 @@ bool LoadMapLayer::init()
         menuItems.pushBack(menuItem);
     }
     
-    ScrollView* scrollView = ScrollView::create(Size(x_ * 0.7, y_));
+    ScrollView* scrollView = ScrollView::create(Size(WINSIZE_X * 0.7, WINSIZE_Y));
     scrollView->setDirection(ScrollView::Direction::VERTICAL);
     
     Menu* menu = Menu::createWithArray(menuItems);
@@ -68,6 +75,5 @@ bool LoadMapLayer::init()
     scrollView->addChild(menu);
     
     addChild(scrollView);
-    return true;                       
 }
 

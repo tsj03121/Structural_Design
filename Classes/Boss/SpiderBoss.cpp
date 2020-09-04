@@ -17,7 +17,7 @@ SpiderBoss::SpiderBoss()
 
 void SpiderBoss::bossInit()
 {
-    setHp(3);
+    setHp(2);
     setBossType(0);
     setScaleSize(Size(4, 4));
     setbossImgName("spiderBoss.png");

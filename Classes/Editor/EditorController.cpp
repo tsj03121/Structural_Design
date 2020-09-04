@@ -13,6 +13,7 @@
 #include "json.h"
 #include "SpiderBoss.h"
 #include "SansBoss.h"
+#include "BasicDefine.h"
 
 USING_NS_CC;
 
@@ -24,7 +25,7 @@ void EditorController::PlayerSelect(Ref *pSender, Layer* layer)
         layer->removeChildByName("Player");
     }
     
-    pSprite_ = Sprite::create("player.png", Rect(0, 0, spriteSize_, spriteSize_));
+    pSprite_ = Sprite::create("player.png", Rect(0, 0, SPRITESIZE, SPRITESIZE));
     pSprite_->retain();
     MenuVisibility(false);
 }

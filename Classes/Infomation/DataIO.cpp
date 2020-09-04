@@ -11,6 +11,7 @@
 #include "json.h"
 #include "SpiderBoss.h"
 #include "BossCreateFactory.h"
+#include "BasicDefine.h"
 
 USING_NS_CC;
 
@@ -31,7 +32,7 @@ void DataIO::readJSON()
     std::string fileName = FileUtils::getInstance()->getWritablePath();
     fileName.append("test_data.json");
     
-    if(fileName == "")
+    if(!FileUtils::getInstance()->isFileExist(fileName))
         return;
     
     unsigned long bufferSize = 0;
@@ -128,7 +129,7 @@ void DataIO::readMapData(std::string mapData, Layer* layer)
         return ;
     }
     
-    Sprite* player = Sprite::create("player.png", Rect(0, 0, spriteSize_, spriteSize_));
+    Sprite* player = Sprite::create("player.png", Rect(0, 0, SPRITESIZE, SPRITESIZE));
     double playerX = root.get("PlayerX", "defaultvalue").asDouble();
     double playerY = root.get("PlayerY", "defaultvalue").asDouble();
     player->setPosition(playerX, playerY);

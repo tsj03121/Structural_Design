@@ -9,6 +9,7 @@
 #include "RewardLayer.h"
 #include "RewardLayerController.h"
 #include "PlayerInfomation.h"
+#include "BasicDefine.h"
 
 USING_NS_CC;
 
@@ -26,10 +27,8 @@ bool RewardLayer::init()
     {
         return false;
     }
-
-    Label* label = Label::createWithTTF("GameScene-RewardLayer", "fonts/Marker Felt.ttf", fontSize_);
-    label->setPosition(x_ * 0.5, y_ * 0.5);
-    addChild(label);
+    
+    LabelCreate();
     
     RewardLayerController* controller = new RewardLayerController();
     addChild(controller, -1, "Controller");
@@ -39,23 +38,30 @@ bool RewardLayer::init()
     
     Menu* menu = Menu::create(menuItem1, NULL);
     menu->alignItemsHorizontally();
-    menu->setPosition(x_ * 0.5, y_ * 0.33);
+    menu->setPosition(WINSIZE_X * 0.5, WINSIZE_Y * 0.33);
     addChild(menu);
     
+    return true;
+}
+
+void RewardLayer::LabelCreate()
+{
     PlayerInfo* playerInfo = PlayerInfo::getInstance();
     
+    Label* label = Label::createWithTTF("GameScene-RewardLayer", FONTNAME, FONTSIZE);
+    label->setPosition(WINSIZE_X * 0.5, WINSIZE_Y * 0.5);
+    addChild(label);
+
     std::string scoreText = "Money : ";
     scoreText.append(std::to_string(playerInfo->getNowMoney()));
-    Label* scoreTextLabel = Label::createWithTTF(scoreText, "fonts/Marker Felt.ttf", fontSize_);
-    scoreTextLabel->setPosition(x_ * 0.20, y_ * 0.75);
+    Label* scoreTextLabel = Label::createWithTTF(scoreText, FONTNAME, FONTSIZE);
+    scoreTextLabel->setPosition(WINSIZE_X * 0.20, WINSIZE_Y * 0.75);
     addChild(scoreTextLabel);
     
     std::string ticketText = std::to_string(playerInfo->getTicket());
     ticketText.append(" / ");
     ticketText.append(std::to_string(playerInfo->maxTicket_));
-    Label* ticketTextLabel = Label::createWithTTF(ticketText, "fonts/Marker Felt.ttf", fontSize_);
-    ticketTextLabel->setPosition(x_ * 0.75, y_ * 0.75);
+    Label* ticketTextLabel = Label::createWithTTF(ticketText, FONTNAME, FONTSIZE);
+    ticketTextLabel->setPosition(WINSIZE_X * 0.75, WINSIZE_Y * 0.75);
     addChild(ticketTextLabel);
-    
-    return true;
 }

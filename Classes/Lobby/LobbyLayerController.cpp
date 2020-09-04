@@ -31,7 +31,7 @@ void LobbyLayerController::Change_MainLayer(Ref* pSender)
 void LobbyLayerController::TicketBuy(Ref *pSender)
 {
     PlayerInfo* playerInfo = PlayerInfo::getInstance();
-    if(playerInfo->getTicket() > 4)
+    if(playerInfo->getTicket() > playerInfo->maxTicket_ - 1)
         return;
     
     playerInfo->setTicket(playerInfo->getTicket() + 1);
@@ -41,6 +41,7 @@ void LobbyLayerController::TicketBuy(Ref *pSender)
     
     Label* ticketTextLabel = (Label*) layer->getChildByName("TicKet");
     std::string ticketText = std::to_string(playerInfo->getTicket());
-    ticketText.append(" / 5");
+    ticketText.append(" / ");
+    ticketText.append(std::to_string(playerInfo->maxTicket_));
     ticketTextLabel->setString(ticketText);
 }

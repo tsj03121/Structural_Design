@@ -243,6 +243,7 @@
 		FC57D76124FF8A950061FE4B /* SpiderBoss.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpiderBoss.cpp; sourceTree = "<group>"; };
 		FC727FC224FF8F2B00DFB192 /* Boss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boss.h; sourceTree = "<group>"; };
 		FC727FC324FF8FAA00DFB192 /* Boss.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Boss.cpp; sourceTree = "<group>"; };
+		FC9191D825022F3500958398 /* BasicDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDefine.h; sourceTree = "<group>"; };
 		FCAF0D7C24F7743C00698B22 /* TitleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		FCAF0D7E24F7744900698B22 /* TitleScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		FCAF0D8524F7750500698B22 /* TitleLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleLayer.h; sourceTree = "<group>"; };
@@ -466,8 +467,9 @@
 				FCF2881C24FCDD860064F674 /* Editor */,
 				FCE594D624F88F9D00A43F57 /* Infomation */,
 				FCF287F924FC8B270064F674 /* json */,
-				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
+				FC9191D825022F3500958398 /* BasicDefine.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -524,8 +526,8 @@
 			children = (
 				FCAF0D8E24F781C000698B22 /* LobbyScene.h */,
 				FCAF0D8F24F781CD00698B22 /* LobbyScene.cpp */,
-				FCAF0D9424F785F000698B22 /* LobbyLayer.cpp */,
 				FCAF0D9324F785E800698B22 /* LobbyLayer.h */,
+				FCAF0D9424F785F000698B22 /* LobbyLayer.cpp */,
 				FCAF0D9724F786E400698B22 /* LobbyLayerController.h */,
 				FCAF0D9924F786F400698B22 /* LobbyLayerController.cpp */,
 			);
@@ -535,10 +537,10 @@
 		FCAF0DCC24F7AD4A00698B22 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				FCAF0DA124F789E600698B22 /* MainLayer.cpp */,
 				FCAF0DA024F789DD00698B22 /* MainLayer.h */,
-				FCAF0D9D24F789D100698B22 /* MainLayerController.cpp */,
+				FCAF0DA124F789E600698B22 /* MainLayer.cpp */,
 				FCAF0D9C24F789B100698B22 /* MainLayerController.h */,
+				FCAF0D9D24F789D100698B22 /* MainLayerController.cpp */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -630,10 +632,10 @@
 		FCF4B4C02500CA9A00B03A75 /* LoadMap */ = {
 			isa = PBXGroup;
 			children = (
-				FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */,
 				FC10E73F24FDF7270061D903 /* LoadMapLayer.h */,
-				FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */,
+				FC10E74024FDF7330061D903 /* LoadMapLayer.cpp */,
 				FC4DD13824FDF9B30001FAEF /* LoadMapLayerController.h */,
+				FC4DD13924FDF9BB0001FAEF /* LoadMapLayerController.cpp */,
 			);
 			path = LoadMap;
 			sourceTree = "<group>";

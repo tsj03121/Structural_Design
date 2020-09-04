@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include "SimpleAudioEngine.h"
-
+#include "BasicDefine.h"
 #include "TitleLayer.h"
 #include "TitleLayerController.h"
 
@@ -27,18 +27,19 @@ bool TitleLayer::init()
     {
         return false;
     }
-    Label* label = Label::createWithTTF("TitleScene-TitleLayer", "fonts/Marker Felt.ttf", fontSize_);
-    label->setPosition(x_ * 0.5, y_ * 0.5);
-    addChild(label);
     
     TitleLayerController* controller = new TitleLayerController();
     addChild(controller, -1, "Controller");
+    
+    Label* label = Label::createWithTTF("TitleScene-TitleLayer", FONTNAME, FONTSIZE);
+    label->setPosition(WINSIZE_X * 0.5, WINSIZE_Y * 0.5);
+    addChild(label);   
     
     MenuItemFont* menuItem1 = MenuItemFont::create("눌러서 로비 화면으로 넘어가세요!", this, menu_selector(TitleLayerController::Goto_LobbyScene));
     menuItem1->setScale(0.3, 0.3);
 
     Menu* menu = Menu::create(menuItem1, NULL);
-    menu->setPosition(Vec2(x_ * 0.5, y_ * 0.33));
+    menu->setPosition(Vec2(WINSIZE_X * 0.5, WINSIZE_Y * 0.33));
     
     addChild(menu);
     return true;

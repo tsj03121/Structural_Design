@@ -19,7 +19,6 @@ enum SelectSprite
 class EditorController : public cocos2d::Node
 {
 public:
-    int spriteSize_ = 30;
     bool isPlayerCreate_ = false;
     cocos2d::Sprite* pSprite_ = nullptr;
     SelectSprite mySelect_;

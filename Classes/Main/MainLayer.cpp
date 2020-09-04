@@ -10,6 +10,7 @@
 #include "SimpleAudioEngine.h"
 #include "MainLayerController.h"
 #include "PlayerInfomation.h"
+#include "BasicDefine.h"
 
 USING_NS_CC;
 
@@ -28,13 +29,19 @@ bool MainLayer::init()
         return false;
     }
 
-    Label* label = Label::createWithTTF("LobbyScene-MainLayer", "fonts/Marker Felt.ttf", fontSize_);
-    label->setPosition(x_ * 0.5, y_ * 0.5);
+    Label* label = Label::createWithTTF("LobbyScene-MainLayer", FONTNAME, FONTSIZE);
+    label->setPosition(WINSIZE_X * 0.5, WINSIZE_Y * 0.5);
     addChild(label, 0, "Label");
     
     MainLayerController* controller = new MainLayerController();
     addChild(controller, -1, "Controller");
 
+    MenuCreate();
+    return true;
+}
+
+void MainLayer::MenuCreate()
+{
     MenuItemFont* menuItem1 = MenuItemFont::create("로비로", this, menu_selector(MainLayerController::Change_LobbyLayer));
     menuItem1->setScale(0.3, 0.3);
     
@@ -49,8 +56,7 @@ bool MainLayer::init()
     
     Menu* menu = Menu::create(menuItem1, menuItem2, menuItem3, menuItem4, NULL);
     menu->alignItemsVertically();
-    menu->setPosition(Vec2(x_ * 0.9, y_ * 0.2));
+    menu->setPosition(Vec2(WINSIZE_X * 0.9, WINSIZE_Y * 0.2));
     
-    addChild(menu);    
-    return true;
+    addChild(menu);
 }

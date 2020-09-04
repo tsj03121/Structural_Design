@@ -17,7 +17,7 @@ SansBoss::SansBoss()
 
 void SansBoss::bossInit()
 {
-    setHp(5);
+    setHp(3);
     setBossType(1);
     setScaleSize(Size(0.5, 0.5));
     setbossImgName("sansBoss.png");

@@ -10,9 +10,6 @@
 
 class ResultLayer : public cocos2d::Layer
 {
-public:
-    float x_ = _director->getWinSize().width;
-    float y_ = _director->getWinSize().height;
     
 public:
     static cocos2d::Layer* createLayer();
@@ -21,5 +18,7 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(ResultLayer);
+public:
+    void LabelCreate();
 };
 #endif /* ResultLayer_h */

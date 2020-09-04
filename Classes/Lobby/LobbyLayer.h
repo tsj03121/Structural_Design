@@ -13,9 +13,6 @@ class LobbyLayer : public cocos2d::Layer
 {
 public:
     cocos2d::MenuItemFont* menuItem1_;
-    float x_ = _director->getWinSize().width;
-    float y_ = _director->getWinSize().height;
-    int fontSize_ = 15;
     
 public:
     static cocos2d::Layer* createLayer();
@@ -26,7 +23,7 @@ public:
     CREATE_FUNC(LobbyLayer);
     
 public:
-    void Log(cocos2d::Ref* pSender);
+    void LabelCreate();
 };
 
 #endif /* LobbyLayer_h */

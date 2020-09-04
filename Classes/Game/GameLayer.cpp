@@ -11,6 +11,7 @@
 #include "GameLayerController.h"
 #include "PlayerInfomation.h"
 #include "DataIO.h"
+#include "BasicDefine.h"
 
 USING_NS_CC;
 
@@ -29,16 +30,18 @@ bool GameLayer::init()
         return false;
     }
 
-    PlayerInfo* playerInfo = PlayerInfo::getInstance();
+    LabelCreate();
+    ArrowKeyCreate();
+    this->schedule(schedule_selector(GameLayerController::Timer), 1.0);
+    HpImgCreate();
+    
+    return true;
+}
+
+void GameLayer::ArrowKeyCreate()
+{
     GameLayerController* controller = new GameLayerController();
     addChild(controller, -1, "Controller");
-    
-    Label* label = Label::createWithTTF("GameScene-GameLayer", "fonts/Marker Felt.ttf", 15);
-    if(label != nullptr)
-    {
-        label->setPosition(Vec2(x_ * 0.5, y_ * 0.5));
-        addChild(label);
-    }
     
     MenuItemImage* menuItemUP = MenuItemImage::create("upArrow.png","upArrow.png", controller, menu_selector(GameLayerController::MoveUP));
     if(menuItemUP != nullptr)
@@ -71,35 +74,48 @@ bool GameLayer::init()
     Menu* menu = Menu::create(menuItemUP, menuItemDOWN, menuItemLEFT, menuItemRIGHT, NULL);
     if(menu != nullptr)
     {
-        menu->setPosition(40 , y_ - 40);
+        menu->setPosition(40 , WINSIZE_Y - 40);
         addChild(menu, 4, "Menu");
     }
+}
+
+void GameLayer::LabelCreate()
+{
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     
+    Label* label = Label::createWithTTF("GameScene-GameLayer", FONTNAME, FONTSIZE);
+    if(label != nullptr)
+    {
+        label->setPosition(Vec2(WINSIZE_X * 0.5, WINSIZE_Y * 0.5));
+        addChild(label);
+    }
     playerInfo->clearTime_ = 0;
-    Label* clearTimelabel = Label::createWithTTF("00 : 00 : 00", "fonts/Marker Felt.ttf", 15);
+    
+    Label* clearTimelabel = Label::createWithTTF("00 : 00 : 00", FONTNAME, FONTSIZE);
     if(clearTimelabel != nullptr)
     {
-        clearTimelabel->setPosition(x_ * 0.85, y_ * 0.85);
+        clearTimelabel->setPosition(WINSIZE_X * 0.85, WINSIZE_Y * 0.85);
         addChild(clearTimelabel, 2, "ClearTimeLabel");
     }
-    this->schedule(schedule_selector(GameLayerController::Timer), 1.0);
+}
 
+void GameLayer::HpImgCreate()
+{
+    PlayerInfo* playerInfo = PlayerInfo::getInstance();
     int hp = playerInfo->getPlayerHp();
     int maxHp = playerInfo->maxHp_;
     for(int heart_i = hp; heart_i > 0; --heart_i)
     {
         Sprite* heartSprite = Sprite::create("heart.png");
         heartSprite->setScale(0.3, 0.3);
-        heartSprite->setPosition(x_ * 0.9 + ((maxHp - heart_i) * -25), y_ * 0.93);
+        heartSprite->setPosition(WINSIZE_X * 0.9 + ((maxHp - heart_i) * -25), WINSIZE_Y * 0.93);
         addChild(heartSprite, 4, "Hp");
     }
-    
-    return true;
 }
 
 void GameLayer::PlayerCreate()
 {
-    Sprite* playerSprite = Sprite::create("player.png",Rect(0, 0, spriteSize_, spriteSize_));
+    Sprite* playerSprite = Sprite::create("player.png",Rect(0, 0, SPRITESIZE, SPRITESIZE));
     if(playerSprite != nullptr)
     {
         playerSprite->setPosition(20, 20);
@@ -112,8 +128,8 @@ void GameLayer::CoinCreate()
     int randCoinCount = RandomHelper::random_int(1, maxRandCoinCount_);
     for(int i = 0; i < randCoinCount; ++i)
     {
-        int randX = RandomHelper::random_int(spriteSize_, (int)x_);
-        int randY = RandomHelper::random_int(spriteSize_, (int)y_);
+        int randX = RandomHelper::random_int(SPRITESIZE, (int)WINSIZE_X);
+        int randY = RandomHelper::random_int(SPRITESIZE, (int)WINSIZE_Y);
         
         Sprite* coinSprite = Sprite::create("coin.png");
         if(coinSprite == nullptr)
