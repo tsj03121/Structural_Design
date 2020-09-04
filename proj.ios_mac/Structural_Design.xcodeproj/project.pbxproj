@@ -457,11 +457,11 @@
 			isa = PBXGroup;
 			children = (
 				FCF69564250072EF005EC38B /* Factory */,
-				FCF4B4C02500CA9A00B03A75 /* LoadMap */,
 				FC57D75E24FF8A780061FE4B /* Boss */,
 				FCAF0DC924F7AD2800698B22 /* Title */,
 				FCAF0DCB24F7AD3C00698B22 /* Lobby */,
 				FCAF0DCC24F7AD4A00698B22 /* Main */,
+				FCF4B4C02500CA9A00B03A75 /* LoadMap */,
 				FCAF0DCD24F7AD5300698B22 /* Game */,
 				FCF2881C24FCDD860064F674 /* Editor */,
 				FCE594D624F88F9D00A43F57 /* Infomation */,
@@ -695,7 +695,7 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design_Temp" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -1101,7 +1101,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design_Temp" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Structural_Design" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
